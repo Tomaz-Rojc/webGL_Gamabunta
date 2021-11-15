@@ -1,0 +1,33 @@
+{
+  "name": "webGL_Gamabunta",
+  "version": "1.0.0",
+  "description": "The great toad sage shall bonk you, should you not behave. Try to bonk him before you pass out.",
+  "main": "sampleApp.js",
+  "bin": {
+    "webGL_Gamabunta": "server.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd bin && nodemon --watch ../* -e js,json,html,css server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomazRojc/webGL_Gamabunta.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TomazRojc/webGL_Gamabunta/issues"
+  },
+  "homepage": "https://github.com/TomazRojc/webGL_Gamabunta#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "nodemonConfig": {
+    "watch": ["../sampleApp.js"]
+  }
+}
