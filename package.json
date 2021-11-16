@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd bin && nodemon --watch ../* -e js,json,html,css server"
+    "start": "cd server && nodemon --watch ../* -e js,json,html,css server"
   },
   "repository": {
     "type": "git",
@@ -26,8 +26,5 @@
   "homepage": "https://github.com/TomazRojc/webGL_Gamabunta#readme",
   "devDependencies": {
     "nodemon": "^2.0.15"
-  },
-  "nodemonConfig": {
-    "watch": ["../sampleApp.js"]
   }
 }
