@@ -28,6 +28,8 @@
     "nodemon": "^2.0.15"
   },
   "nodemonConfig": {
-    "watch": ["../sampleApp.js"]
+    "watch": [
+      "../sampleApp.js"
+    ]
   }
 }
