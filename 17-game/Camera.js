@@ -18,7 +18,9 @@ export class Camera extends Node {
         this.keys = {};
 
         this.dash = false;
-        this.dashCooldown = false;
+        this.dashOnCooldown = false;
+        this.dashCooldownStart = -1;
+        this.stamina = 0;
     }
 
     updateProjection() {
@@ -49,21 +51,36 @@ export class Camera extends Node {
         }
 
         // check for dash
-        if (this.keys['ControlLeft']) {
-            if (!c.dashCooldown) {
+        if (this.keys['KeyQ']) {
+            if (!c.dashOnCooldown) {
                 c.dash = true;
-                c.dashCooldown = true;
-                setTimeout(function(){ c.dash = false; }, 250);
-                setTimeout(function(){ c.dashCooldown = false; }, 1000);
+                c.dashOnCooldown = true;
+
+                // dash loading bar:
+                c.dashCooldownStart = Date.now();
+                var elem = document.getElementById("myBar");
+                var width = 0;
+                var id = setInterval(frame, 10);
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                    } else {
+                        const time = Date.now();
+                        width = parseInt(100 - (c.dashCooldownStart - time + c.dashCooldown)*100/c.dashCooldown);
+                        elem.style.width = width + "%";
+                    }
+                }
+                setTimeout(function(){ c.dash = false; }, 150);
+                setTimeout(function(){ c.dashOnCooldown = false; }, c.dashCooldown);
             }
-        }
+        } 
 
         // 2: update velocity
         if (c.dash) {
-            console.log(c);
-            c.maxSpeed = 500;
-            vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * 200);
-        } else if (this.keys['ShiftLeft']) {
+            c.maxSpeed = 50;
+            vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * 1000);
+        } else if (this.keys['ShiftLeft'] && c.stamina < 500) {
+            c.stamina += 20;
             c.maxSpeed = 10;
             vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);
         } else {
@@ -127,7 +144,6 @@ export class Camera extends Node {
 
     keydownHandler(e) {
         this.keys[e.code] = true;
-        console.log(e.code);
     }
 
     keyupHandler(e) {
@@ -137,13 +153,14 @@ export class Camera extends Node {
 }
 
 Camera.defaults = {
-    aspect           : 1,
-    fov              : 1.5,
-    near             : 0.01,
-    far              : 100,
-    velocity         : [0, 0, 0],
-    mouseSensitivity : 0.002,
-    maxSpeed         : 3,
-    friction         : 0.2,
-    acceleration     : 20
+    aspect            : 1,
+    fov               : 1.5,
+    near              : 0.01,
+    far               : 100,
+    velocity          : [0, 0, 0],
+    mouseSensitivity  : 0.002,
+    maxSpeed          : 3,
+    friction          : 0.2,
+    acceleration      : 40,
+    dashCooldown      : 2000
 };

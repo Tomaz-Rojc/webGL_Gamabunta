@@ -35,6 +35,15 @@ export class Renderer {
     }
 
     render(scene, camera) {
+        // stamina loading bar:
+        var elem = document.getElementById("myBar2");
+        const width = parseInt(100 - (camera.stamina/5));
+        if (width > 100) {
+            elem.style.width = 100 + "%";
+        } else {
+            elem.style.width = width + "%";
+        }
+
         const gl = this.gl;
 
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);

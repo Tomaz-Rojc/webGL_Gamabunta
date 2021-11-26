@@ -38,7 +38,15 @@ class App extends Application {
 
         this.camera.aspect = this.aspect;
         this.camera.updateProjection();
+        
         this.renderer.prepare(this.scene);
+        
+        // start the incrementator for stamina
+        setInterval(() => {
+            if (this.camera.stamina -1 >= 0) {
+                this.camera.stamina -= 14;
+            }
+        }, 10); 
     }
 
     enableCamera() {
