@@ -5,6 +5,7 @@ import { Physics } from './Physics.js';
 import { Camera } from './Camera.js';
 import { SceneLoader } from './SceneLoader.js';
 import { SceneBuilder } from './SceneBuilder.js';
+import { Weapon } from './Weapon.js';
 
 class App extends Application {
 
@@ -34,7 +35,31 @@ class App extends Application {
             if (node instanceof Camera) {
                 this.camera = node;
             }
+            if(node instanceof Weapon) {
+                this.weapon = node;
+            }
         });
+
+        // Set weapon as child of camera
+        document.addEventListener('keypress', (e) => {
+            if(e.code === 'KeyE') {
+
+                this.scene.nodes.some((node, idx) => {
+                    if(node instanceof Weapon) {
+                        this.camera.addChild(this.weapon);
+                        this.scene.nodes.splice(idx);
+                        document.addEventListener('click', (e) => {
+                            this.weapon.animate();
+                            console.log("animation")
+                        })
+                    }
+                });
+
+                // * For object transforms
+                // this.camera.children[0].translation[1]+=1;
+                // this.camera.children[0].updateTransform()
+            }
+        })
 
         this.camera.aspect = this.aspect;
         this.camera.updateProjection();
