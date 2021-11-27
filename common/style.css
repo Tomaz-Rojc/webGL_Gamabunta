@@ -37,3 +37,24 @@ a.back {
 a.back:hover {
     background: #ddd;
 }
+
+#myProgress {
+    width: 50%;
+    background-color: grey;
+  }
+  
+  #myBar {
+    width: 100%;
+    height: 30px;
+    background-color: green;
+  }
+  #myProgress2 {
+    width: 50%;
+    background-color: grey;
+  }
+  
+  #myBar2 {
+    width: 100%;
+    height: 30px;
+    background-color: red;
+  }

@@ -5,6 +5,7 @@ import { Model } from './Model.js';
 import { Camera } from './Camera.js';
 
 import { Scene } from './Scene.js';
+import { Weapon } from './Weapon.js';
 
 export class SceneBuilder {
 
@@ -19,6 +20,11 @@ export class SceneBuilder {
                 const mesh = new Mesh(this.spec.meshes[spec.mesh]);
                 const texture = this.spec.textures[spec.texture];
                 return new Model(mesh, texture, spec);
+            }
+            case 'weapon': {
+                const mesh = new Mesh(this.spec.meshes[spec.mesh]);
+                const texture = this.spec.textures[spec.texture];
+                return new Weapon(mesh, texture, spec);
             }
             default: return new Node(spec);
         }

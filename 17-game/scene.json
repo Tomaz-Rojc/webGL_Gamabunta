@@ -1,17 +1,13 @@
 {
-    "nodes": [
-      {
-        "type": "camera",
-        "translation": [0, 1, 0],
-        "aabb": {
-          "min": [-0.2, -0.2, -0.2],
-          "max": [0.2, 0.2, 0.2]
-        },
-        "aspect": 1,
-        "fov": 1.5,
-        "near": 0.01,
-        "far": 100
-      },
+  "nodes": [
+     {
+      "type": "camera",
+      "translation": [0, 2, 0],
+      "aabb": {
+        "min": [-0.2, -0.2, -0.2],
+        "max": [0.2, 0.2, 0.2]
+      }
+    },
       {
         "type": "model",
         "mesh": 0,
@@ -103,17 +99,27 @@
         "texture": 0,
         "translation": [9, 0.3, 9],
         "scale": [0.3, 0.3, 0.3]
+      },
+    {
+        "type": "weapon",
+        "mesh": 0,
+        "texture": 2,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [1, 0, -2],
+        "scale": [0.5, 0.5, 1]
       }
-  
-    ],
-    "textures": [
-      "../../common/images/crate-diffuse.png",
-      "../../common/images/grass.png",
-      "../../common/images/floor.png"
-    ],
-    "meshes": [
-      "../../common/models/cube.json",
-      "../../common/models/pyramid.json"
-    ]
-  }
-  
+  ],
+  "textures": [
+    "../../common/images/crate-diffuse.png",
+    "../../common/images/grass.png",
+    "../../common/images/crate-normal.png",
+    "../../common/images/floor.png"
+  ],
+  "meshes": [
+    "../../common/models/cube.json",
+    "../../common/models/pyramid.json"
+  ]
+}
