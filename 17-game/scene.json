@@ -45,7 +45,7 @@
     {
       "type": "model",
       "mesh": 0,
-      "texture": 0,
+      "texture": 3,
       "aabb": {
         "min": [-1, -0.1, -1],
         "max": [1, 0.1, 1]
@@ -64,12 +64,25 @@
         },
         "translation": [1, 0, -2],
         "scale": [0.5, 0.5, 1]
+    },
+    {
+        "type": "model",
+        "mesh": 0,
+        "texture": 4,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [10, 2, -5],
+        "scale": [10, 10, 10]
       }
   ],
   "textures": [
     "../../common/images/crate-diffuse.png",
     "../../common/images/grass.png",
-    "../../common/images/crate-normal.png"
+    "../../common/images/crate-normal.png",
+    "../../common/images/rift.png",
+    "../../common/images/sale.png"
   ],
   "meshes": [
     "../../common/models/cube.json",
