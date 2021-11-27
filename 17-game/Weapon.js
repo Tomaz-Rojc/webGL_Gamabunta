@@ -10,7 +10,6 @@ export class Weapon extends Node {
 
     animate() {
         let frame = 0;
-        console.log(this);
         const anim = setInterval(() => {
             this.rotation[1] += 1;
             this.updateTransform();

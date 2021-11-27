@@ -69,7 +69,7 @@ class App extends Application {
         // start the incrementator for stamina
         setInterval(() => {
             if (this.camera.stamina -1 >= 0) {
-                this.camera.stamina -= 14;
+                this.camera.stamina -= 15;
             }
         }, 10); 
     }
