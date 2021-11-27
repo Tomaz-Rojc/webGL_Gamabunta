@@ -4,7 +4,7 @@
       "type": "camera",
       "translation": [0, 2, -7],
       "aabb": {
-        "min": [-0.5, -2, -0.5],
+        "min": [-0.5, -1.9, -0.5],
         "max": [0.5, 0.5, 0.5]
       }
     },
@@ -38,6 +38,16 @@
         "min": [-1, -1, -1],
         "max": [1, 1, 1]
       },
+      "translation": [3, 3, -5]
+    },
+    {
+      "type": "model",
+      "mesh": 0,
+      "texture": 0,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
       "translation": [-5, 1, -4]
     },
     {
@@ -53,43 +63,43 @@
       "scale": [1, 1, 1]
     },
     {
+      "objekt": "GAMABUNTA",
+      "type": "model",
+      "mesh": 0,
+      "texture": 7,
+      "aabb": {
+        "min": [-3, -3, -3],
+        "max": [3, 3, 3]
+      },
+      "translation": [0, 3, -16 ],
+      "scale": [3, 3, 3]
+    },
+    {
+      "objekt": "CEILING",
+      "type": "model",
+      "mesh": 0,
+      "texture": 6,
+      "aabb": {
+        "min": [-20, 0, -20],
+        "max": [20, 1, 20]
+      },
+      "translation": [0, 15, 0],
+      "scale": [20, 1, 20],
+      "isBreakable": false
+    },
+    {
       "objekt":"STONE FLOOR",
       "type": "model",
       "mesh": 0,
       "texture": 4,
       "aabb": {
-        "min": [0, 0, 0],
-        "max": [0, 0, 0]
+        "min": [-20, -5, -20],
+        "max": [20, 0, 20]
       },
       "translation": [0, 0, 0],
       "scale": [20, 0, 20],
       "isBreakable": false
     },
-    {
-        "objekt": "GAMABUNTA",
-        "type": "model",
-        "mesh": 0,
-        "texture": 7,
-        "aabb": {
-          "min": [-3, -3, -3],
-          "max": [3, 3, 3]
-        },
-        "translation": [0, 3, -16 ],
-        "scale": [3, 3, 3]
-      },
-    {
-        "objekt": "CEILING",
-        "type": "model",
-        "mesh": 0,
-        "texture": 6,
-        "aabb": {
-          "min": [-1, -0.1, -1],
-          "max": [1, 0.1, 1]
-        },
-        "translation": [0, 10, 0],
-        "scale": [20, 0, 20],
-        "isBreakable": false
-      },
     {
       "objekt":"WALL1",
       "type": "model",
@@ -99,7 +109,7 @@
         "min": [-20, -10, -1],
         "max": [20, 10, 1]
       },
-      "translation": [0, 0, 20],
+      "translation": [0, 10, 20],
       "scale": [20, 10, 1],
       "isBreakable" : false
     },
@@ -112,7 +122,7 @@
         "min": [-20, -10, -1],
         "max": [20, 10, 1]
       },
-      "translation": [0, 0, -20],
+      "translation": [0, 10, -20],
       "scale": [20, 10, 1],
       "isBreakable" : false
     },
@@ -125,7 +135,7 @@
         "min": [-1, -10, -20],
         "max": [1, 10, 20]
       },
-      "translation": [20, 0, 0],
+      "translation": [20, 10, 0],
       "scale": [1, 10, 20],
       "isBreakable" : false
     },
@@ -138,7 +148,7 @@
         "min": [-1, -10, -20],
         "max": [1, 10, 20]
       },
-      "translation": [-20, 0, 0],
+      "translation": [-20, 10, 0],
       "scale": [1, 10, 20],
       "isBreakable" : false
     },
