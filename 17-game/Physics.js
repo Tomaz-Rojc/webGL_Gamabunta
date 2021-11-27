@@ -1,9 +1,10 @@
 import { vec3, mat4 } from '../../lib/gl-matrix-module.js';
+import { Camera } from './Camera.js';
 
 export class Physics {
-
     constructor(scene) {
         this.scene = scene;
+        this.score = 0;
     }
 
     update(dt) {
@@ -18,6 +19,37 @@ export class Physics {
                 });
             }
         });
+
+        this.scene.traverse(node => {
+            if (node instanceof Camera) {
+                this.camera = node;
+            }
+        });
+
+        if (this.camera) {
+            const cameraLocation = this.camera.returnLocation();
+            // console.log(cameraLocation)
+            if (cameraLocation[0] <= 9.3 && cameraLocation[0] >= 8.7) {
+                if (cameraLocation[2] <= -8.7 && cameraLocation[2] >= -9.3) {
+                    this.makeInvisible(this.scene.nodes[7]);
+                }
+            }
+            if (cameraLocation[0] <= -8.7 && cameraLocation[0] >= -9.3) {
+                if (cameraLocation[2] <= -8.7 && cameraLocation[2] >= -9.3) {
+                    this.makeInvisible(this.scene.nodes[8]);
+                }
+            }
+            if (cameraLocation[0] <= -8.7 && cameraLocation[0] >= -9.3) {
+                if (cameraLocation[2] <= 9.3 && cameraLocation[2] >= 8.7) {
+                    this.makeInvisible(this.scene.nodes[9]);
+                }
+            }
+            if (cameraLocation[0] <= 9.3 && cameraLocation[0] >= 8.7) {
+                if (cameraLocation[2] <= 9.3 && cameraLocation[2] >= 8.7) {
+                    this.makeInvisible(this.scene.nodes[10]);
+                }
+            }
+        }
     }
 
     intervalIntersection(min1, max1, min2, max2) {
@@ -89,6 +121,16 @@ export class Physics {
 
         vec3.add(a.translation, a.translation, minDirection);
         a.updateTransform();
+    }
+
+    makeInvisible(model) {
+        if (model.scale[0] == 0) {
+            return;
+        }
+        model.scale = [0, 0, 0];
+        model.updateTransform();
+        this.score += 1;
+        console.log(this.score);
     }
 
 }

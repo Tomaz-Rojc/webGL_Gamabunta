@@ -1,66 +1,119 @@
 {
-  "nodes": [
-    {
-      "type": "camera",
-      "translation": [0, 1, 0],
-      "aabb": {
-        "min": [-0.2, -0.2, -0.2],
-        "max": [0.2, 0.2, 0.2]
+    "nodes": [
+      {
+        "type": "camera",
+        "translation": [0, 1, 0],
+        "aabb": {
+          "min": [-0.2, -0.2, -0.2],
+          "max": [0.2, 0.2, 0.2]
+        },
+        "aspect": 1,
+        "fov": 1.5,
+        "near": 0.01,
+        "far": 100
       },
-      "aspect": 1,
-      "fov": 1.5,
-      "near": 0.01,
-      "far": 100
-    },
-    {
-      "type": "model",
-      "mesh": 0,
-      "texture": 0,
-      "aabb": {
-        "min": [-1, -1, -1],
-        "max": [1, 1, 1]
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 0,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [3, 1, -5]
       },
-      "translation": [3, 1, -5]
-    },
-    {
-      "type": "model",
-      "mesh": 0,
-      "texture": 1,
-      "aabb": {
-        "min": [-1, -1, -1],
-        "max": [1, 1, 1]
+      {
+          "type": "model",
+          "mesh": 0,
+          "texture": 0,
+          "aabb": {
+            "min": [-1, -1, -1],
+            "max": [1, 1, 1]
+          },
+          "translation": [-3, 1, -5]
+        },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 1,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [0, 1, 5]
       },
-      "translation": [0, 1, 5]
-    },
-    {
-      "type": "model",
-      "mesh": 1,
-      "texture": 1,
-      "aabb": {
-        "min": [-0.5, -0.5, -0.5],
-        "max": [0.5, 0.5, 0.5]
+      {
+        "type": "model",
+        "mesh": 1,
+        "texture": 1,
+        "aabb": {
+          "min": [-0.5, -0.5, 0.5],
+          "max": [0.5, 0.5, 0.5]
+        },
+        "translation": [0, 0.5, -5],
+        "scale": [2, 2, 2]
       },
-      "translation": [0, 1, -5]
-    },
-    {
-      "type": "model",
-      "mesh": 0,
-      "texture": 0,
-      "aabb": {
-        "min": [-1, -0.1, -1],
-        "max": [1, 0.1, 1]
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 0,
+        "aabb": {
+          "min": [-1, -0.1, -1],
+          "max": [1, 0.1, 1]
+        },
+        "translation": [3, 0.1, -1],
+        "rotation": [0, 1, 0],
+        "scale": [1, 0.1, 1]
       },
-      "translation": [3, 0.1, -1],
-      "rotation": [0, 1, 0],
-      "scale": [20, 0, 20]
-    }
-  ],
-  "textures": [
-    "../../common/images/crate-diffuse.png",
-    "../../common/images/grass.png"
-  ],
-  "meshes": [
-    "../../common/models/cube.json",
-    "../../common/models/pyramid.json"
-  ]
-}
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 2,
+        "aabb": {
+          "min": [-1, -0.1, -1],
+          "max": [1, 0.1, 1]
+        },
+        "translation": [0, 0, 0],
+        "scale": [10, 0, 10]
+      },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 0,
+        "translation": [9, 0.3, -9],
+        "scale": [0.3, 0.3, 0.3]
+      },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 0,
+        "translation": [-9, 0.3, -9],
+        "scale": [0.3, 0.3, 0.3]
+      },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 0,
+        "translation": [-9, 0.3, 9],
+        "scale": [0.3, 0.3, 0.3]
+      },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 0,
+        "translation": [9, 0.3, 9],
+        "scale": [0.3, 0.3, 0.3]
+      }
+  
+    ],
+    "textures": [
+      "../../common/images/crate-diffuse.png",
+      "../../common/images/grass.png",
+      "../../common/images/floor.png"
+    ],
+    "meshes": [
+      "../../common/models/cube.json",
+      "../../common/models/pyramid.json"
+    ]
+  }
+  

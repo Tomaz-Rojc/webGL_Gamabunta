@@ -69,6 +69,7 @@ class App extends Application {
         if (this.physics) {
             this.physics.update(dt);
         }
+
     }
 
     render() {

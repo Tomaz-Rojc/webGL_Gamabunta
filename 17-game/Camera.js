@@ -19,6 +19,8 @@ export class Camera extends Node {
 
         this.dash = false;
         this.dashCooldown = false;
+
+        
     }
 
     updateProjection() {
@@ -132,6 +134,11 @@ export class Camera extends Node {
 
     keyupHandler(e) {
         this.keys[e.code] = false;
+    }
+
+    returnLocation() {
+        const c = this;
+        return c.translation;
     }
 
 }
