@@ -6,6 +6,7 @@ import { Camera } from './Camera.js';
 
 import { Scene } from './Scene.js';
 import { Weapon } from './Weapon.js';
+import { Collectable } from './Collectable.js';
 
 export class SceneBuilder {
 
@@ -25,6 +26,11 @@ export class SceneBuilder {
                 const mesh = new Mesh(this.spec.meshes[spec.mesh]);
                 const texture = this.spec.textures[spec.texture];
                 return new Weapon(mesh, texture, spec);
+            }
+            case 'collectable': {
+                const mesh = new Mesh(this.spec.meshes[spec.mesh]);
+                const texture = this.spec.textures[spec.texture];
+                return new Collectable(mesh, texture, spec);
             }
             default: return new Node(spec);
         }

@@ -29,38 +29,7 @@ class App extends Application {
         this.scene = builder.build();
         this.physics = new Physics(this.scene);
 
-        // Find first camera.
-        this.camera = null;
-        this.scene.traverse(node => {
-            if (node instanceof Camera) {
-                this.camera = node;
-            }
-            if(node instanceof Weapon) {
-                this.weapon = node;
-            }
-        });
-
-        // Set weapon as child of camera
-        document.addEventListener('keypress', (e) => {
-            if(e.code === 'KeyE') {
-
-                this.scene.nodes.some((node, idx) => {
-                    if(node instanceof Weapon) {
-                        this.camera.addChild(this.weapon);
-                        this.scene.nodes.splice(idx);
-                        document.addEventListener('click', (e) => {
-                            this.weapon.addPhysics(this.scene);
-                            this.weapon.animate();
-                            this.weapon.attack();
-                        })
-                    }
-                });
-
-                // * For object transforms
-                // this.camera.children[0].translation[1]+=1;
-                // this.camera.children[0].updateTransform()
-            }
-        })
+        this.setAppProperties();
 
         this.camera.aspect = this.aspect;
         this.camera.updateProjection();
@@ -85,9 +54,9 @@ class App extends Application {
         }
 
         if (document.pointerLockElement === this.canvas) {
-            this.camera.enable();
+            this.camera.enable(this);
         } else {
-            this.camera.disable();
+            this.camera.disable(this);
         }
     }
 
@@ -120,6 +89,18 @@ class App extends Application {
             this.camera.aspect = this.aspect;
             this.camera.updateProjection();
         }
+    }
+
+    setAppProperties() {
+        this.camera = null;
+        this.scene.traverse(node => {
+            if (node instanceof Camera) {
+                this.camera = node;
+            }
+            if(node instanceof Weapon) {
+                this.weapon = node;
+            }
+        });
     }
 
 }

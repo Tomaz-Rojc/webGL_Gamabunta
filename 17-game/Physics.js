@@ -1,10 +1,17 @@
 import { vec3, mat4 } from '../../lib/gl-matrix-module.js';
 import { Camera } from './Camera.js';
+import { Collectable } from './Collectable.js';
 
 export class Physics {
     constructor(scene) {
         this.scene = scene;
         this.score = 0;
+        this.scene.traverse(node => {
+            if (node instanceof Camera) {
+                this.camera = node;
+            }
+        });
+        this.saleScore = 0;
     }
 
     update(dt) {
@@ -20,36 +27,8 @@ export class Physics {
             }
         });
 
-        this.scene.traverse(node => {
-            if (node instanceof Camera) {
-                this.camera = node;
-            }
-        });
+        this.pickup();
 
-        if (this.camera) {
-            const cameraLocation = this.camera.returnLocation();
-            // console.log(cameraLocation)
-            if (cameraLocation[0] <= 9.3 && cameraLocation[0] >= 8.7) {
-                if (cameraLocation[2] <= -8.7 && cameraLocation[2] >= -9.3) {
-                    this.makeInvisible(this.scene.nodes[7]);
-                }
-            }
-            if (cameraLocation[0] <= -8.7 && cameraLocation[0] >= -9.3) {
-                if (cameraLocation[2] <= -8.7 && cameraLocation[2] >= -9.3) {
-                    this.makeInvisible(this.scene.nodes[8]);
-                }
-            }
-            if (cameraLocation[0] <= -8.7 && cameraLocation[0] >= -9.3) {
-                if (cameraLocation[2] <= 9.3 && cameraLocation[2] >= 8.7) {
-                    this.makeInvisible(this.scene.nodes[9]);
-                }
-            }
-            if (cameraLocation[0] <= 9.3 && cameraLocation[0] >= 8.7) {
-                if (cameraLocation[2] <= 9.3 && cameraLocation[2] >= 8.7) {
-                    this.makeInvisible(this.scene.nodes[10]);
-                }
-            }
-        }
     }
 
     intervalIntersection(min1, max1, min2, max2) {
@@ -133,36 +112,52 @@ export class Physics {
         console.log(this.score);
     }
 
-    attack(a, scene) {
-        scene.traverse(node => {
-            if (node !== a) {
-                let b = node;
+    isColliding(a, b) {
+        const ta = a.getGlobalTransform();
+        const tb = b.getGlobalTransform();
 
-                const ta = a.getGlobalTransform();
-                const tb = b.getGlobalTransform();
+        const posa = mat4.getTranslation(vec3.create(), ta);
+        const posb = mat4.getTranslation(vec3.create(), tb);
 
-                const posa = mat4.getTranslation(vec3.create(), ta);
-                const posb = mat4.getTranslation(vec3.create(), tb);
+        const mina = vec3.add(vec3.create(), posa, a.aabb.min);
+        const maxa = vec3.add(vec3.create(), posa, a.aabb.max);
+        const minb = vec3.add(vec3.create(), posb, b.aabb.min);
+        const maxb = vec3.add(vec3.create(), posb, b.aabb.max);
 
-                const mina = vec3.add(vec3.create(), posa, a.aabb.min);
-                const maxa = vec3.add(vec3.create(), posa, a.aabb.max);
-                const minb = vec3.add(vec3.create(), posb, b.aabb.min);
-                const maxb = vec3.add(vec3.create(), posb, b.aabb.max);
+        const isColliding = this.aabbIntersection({
+            min: mina,
+            max: maxa
+        }, {
+            min: minb,
+            max: maxb
+        });
 
-                const isColliding = this.aabbIntersection({
-                    min: mina,
-                    max: maxa
-                }, {
-                    min: minb,
-                    max: maxb
-                });
+        return isColliding;
+    }
 
-                if(isColliding) {
-                    scene.nodes.splice(scene.nodes.indexOf(b), 1)
-                    console.log(scene)
-                }
-
+    attack(a) {
+        console.log(a)
+        this.scene.traverse(node => {
+            console.log(node, node !== a, this.isColliding(a, node), !(node instanceof Camera))
+            if (node !== a && this.isColliding(a, node) && !(node instanceof Camera)) {
+                console.log(node)
+                this.removeNode(node);
             }
         });
+    }
+
+    pickup() {
+        this.scene.traverse(node => {
+            if (node instanceof Collectable && this.isColliding(node, this.camera)) {
+                this.removeNode(node);
+                this.saleScore++;
+                document.getElementById("saleScore").innerHTML = this.saleScore;
+            }
+        });
+    }
+
+    removeNode(node) {
+        console.log(this.scene.nodes.indexOf(node))
+        this.scene.nodes.splice(this.scene.nodes.indexOf(node), 1);
     }
 }

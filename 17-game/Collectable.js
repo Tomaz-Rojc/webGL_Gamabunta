@@ -1,12 +1,13 @@
 import { Node } from './Node.js';
 import { Physics } from './Physics.js';
 
-export class Weapon extends Node {
+export class Collectable extends Node {
 
     constructor(mesh, image, options) {
         super(options);
         this.mesh = mesh;
         this.image = image;
+        this.startAnimation();
     }
 
     addPhysics(scene) {
@@ -14,20 +15,14 @@ export class Weapon extends Node {
         this.physics = new Physics(scene);
     }
 
-    animate() {
-        let frame = 0;
-        const anim = setInterval(() => {
-            this.rotation[1] += 1;
+    startAnimation() {
+        setInterval(() => {
+            this.rotation[1] += 0.1;
             this.updateTransform();
-            frame += 1;
-            if(frame >= 60)
-                clearInterval(anim);
-        }, 1);
+        }, 60);
     }
 
-    attack() {
-        this.animate()
-        this.physics.attack(this);
-    }
+    pickup() {
 
+    }
 }

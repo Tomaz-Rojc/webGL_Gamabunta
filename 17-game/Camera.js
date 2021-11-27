@@ -2,6 +2,7 @@ import { vec3, mat4 } from '../../lib/gl-matrix-module.js';
 
 import { Utils } from './Utils.js';
 import { Node } from './Node.js';
+import { Weapon } from './Weapon.js';
 
 export class Camera extends Node {
 
@@ -121,16 +122,18 @@ export class Camera extends Node {
         }
     }
 
-    enable() {
+    enable(game, scene) {
         document.addEventListener('mousemove', this.mousemoveHandler);
         document.addEventListener('keydown', this.keydownHandler);
         document.addEventListener('keyup', this.keyupHandler);
+        document.addEventListener('keypress', (e) => this.weaponHandler(e, game));
     }
 
-    disable() {
+    disable(game, scene) {
         document.removeEventListener('mousemove', this.mousemoveHandler);
         document.removeEventListener('keydown', this.keydownHandler);
         document.removeEventListener('keyup', this.keyupHandler);
+        document.removeEventListener('keypress', (e) => this.weaponHandler(e, game));
 
         for (let key in this.keys) {
             this.keys[key] = false;
@@ -167,6 +170,26 @@ export class Camera extends Node {
         this.keys[e.code] = false;
     }
 
+    weaponHandler(e, game) {
+        if(e.code === 'KeyE') {
+            game.scene.nodes.some((node, idx) => {
+                if(node instanceof Weapon) {
+                    game.camera.addChild(game.weapon);
+                    game.scene.nodes.splice(idx, 1);
+                    game.weapon.addPhysics(game.scene);
+                    // Attack listener is not removed, does not really affect the game.
+                    this.attackListener = document.addEventListener('click', (e) => {
+                        game.weapon.attack();
+                    });
+                }
+            });
+
+            // * For object transforms
+            // this.camera.children[0].translation[1]+=1;
+            // this.camera.children[0].updateTransform()
+        }
+    }
+
     returnLocation() {
         const c = this;
         return c.translation;
@@ -184,5 +207,6 @@ Camera.defaults = {
     maxSpeed          : 3,
     friction          : 0.2,
     acceleration      : 40,
-    dashCooldown      : 2000
+    dashCooldown      : 2000,
+    maxYCoordinate    : 2
 };
