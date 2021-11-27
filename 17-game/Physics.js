@@ -31,25 +31,35 @@ export class Physics {
             // console.log(cameraLocation)
             if (cameraLocation[0] <= 9.3 && cameraLocation[0] >= 8.7) {
                 if (cameraLocation[2] <= -8.7 && cameraLocation[2] >= -9.3) {
-                    this.makeInvisible(this.scene.nodes[7]);
+                    this.makeInvisible(this.scene.nodes[1]);
                 }
             }
             if (cameraLocation[0] <= -8.7 && cameraLocation[0] >= -9.3) {
                 if (cameraLocation[2] <= -8.7 && cameraLocation[2] >= -9.3) {
-                    this.makeInvisible(this.scene.nodes[8]);
+                    this.makeInvisible(this.scene.nodes[2]);
                 }
             }
             if (cameraLocation[0] <= -8.7 && cameraLocation[0] >= -9.3) {
                 if (cameraLocation[2] <= 9.3 && cameraLocation[2] >= 8.7) {
-                    this.makeInvisible(this.scene.nodes[9]);
+                    this.makeInvisible(this.scene.nodes[3]);
                 }
             }
             if (cameraLocation[0] <= 9.3 && cameraLocation[0] >= 8.7) {
                 if (cameraLocation[2] <= 9.3 && cameraLocation[2] >= 8.7) {
-                    this.makeInvisible(this.scene.nodes[10]);
+                    this.makeInvisible(this.scene.nodes[4]);
                 }
             }
         }
+        
+        let k1 = this.scene.nodes[1];
+        let k2 = this.scene.nodes[2];
+        let k3 = this.scene.nodes[3];
+        let k4 = this.scene.nodes[4];
+        this.animateCollectible(k1); 
+        this.animateCollectible(k2); 
+        this.animateCollectible(k3); 
+        this.animateCollectible(k4);
+
     }
 
     intervalIntersection(min1, max1, min2, max2) {
@@ -131,6 +141,13 @@ export class Physics {
         model.updateTransform();
         this.score += 1;
         console.log(this.score);
+    }
+
+    animateCollectible(model) {
+        const x = Math.cos(Date.now() * 0.001);
+        model.translation[1] += x / 250;
+        model.rotation[1] += 0.01;
+        model.updateTransform();
     }
 
     attack(a, scene) {
