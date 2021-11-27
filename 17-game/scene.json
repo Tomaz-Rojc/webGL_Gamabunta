@@ -66,13 +66,38 @@
       "mesh": 0,
       "texture": 4,
       "aabb": {
-        "min": [-1, -0.1, -1],
-        "max": [1, 0.1, 1]
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
       },
       "translation": [0, 0, 0],
       "scale": [10, 0, 10],
       "isBreakable": false
     },
+    {
+        "objekt": "GAMABUNTA",
+        "type": "model",
+        "mesh": 0,
+        "texture": 7,
+        "aabb": {
+          "min": [-10, -10, -2],
+          "max": [10, 10, 2]
+        },
+        "translation": [25, 0, 0],
+        "scale": [10, 10, 2]
+      },
+    {
+        "objekt": "CEILING",
+        "type": "model",
+        "mesh": 0,
+        "texture": 6,
+        "aabb": {
+          "min": [-1, -0.1, -1],
+          "max": [1, 0.1, 1]
+        },
+        "translation": [0, 50, 0],
+        "scale": [100, 0, 100],
+        "isBreakable": false
+      },
     {
       "type": "model",
       "mesh": 0,
@@ -136,7 +161,9 @@
     "../../common/images/crate-normal.png",
     "../../common/images/floor.png",
     "../../common/images/rift.png",
-    "../../common/images/sale.png"
+    "../../common/images/sale.png",
+    "../../common/images/ceiling.png",
+    "../../common/images/gamabunta.png"
   ],
   "meshes": [
     "../../common/models/cube.json",
