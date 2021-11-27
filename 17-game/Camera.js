@@ -179,7 +179,12 @@ export class Camera extends Node {
                     game.weapon.addPhysics(game.scene);
                     // Attack listener is not removed, does not really affect the game.
                     this.attackListener = document.addEventListener('click', (e) => {
-                        game.weapon.attack();
+                        if(e.button === 0) {
+                            game.weapon.attack();
+                        } else if(e.button === 2) {
+                            game.weapon.shoot();
+                        }
+                        
                     });
                 }
             });
