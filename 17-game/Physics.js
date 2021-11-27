@@ -91,4 +91,36 @@ export class Physics {
         a.updateTransform();
     }
 
+    attack(a, scene) {
+        scene.traverse(node => {
+            if (node !== a) {
+                let b = node;
+
+                const ta = a.getGlobalTransform();
+                const tb = b.getGlobalTransform();
+
+                const posa = mat4.getTranslation(vec3.create(), ta);
+                const posb = mat4.getTranslation(vec3.create(), tb);
+
+                const mina = vec3.add(vec3.create(), posa, a.aabb.min);
+                const maxa = vec3.add(vec3.create(), posa, a.aabb.max);
+                const minb = vec3.add(vec3.create(), posb, b.aabb.min);
+                const maxb = vec3.add(vec3.create(), posb, b.aabb.max);
+
+                const isColliding = this.aabbIntersection({
+                    min: mina,
+                    max: maxa
+                }, {
+                    min: minb,
+                    max: maxb
+                });
+
+                if(isColliding) {
+                    scene.nodes.splice(scene.nodes.indexOf(b), 1)
+                    console.log(scene)
+                }
+
+            }
+        });
+    }
 }
