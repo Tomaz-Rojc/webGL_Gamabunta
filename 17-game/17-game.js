@@ -49,8 +49,9 @@ class App extends Application {
                         this.camera.addChild(this.weapon);
                         this.scene.nodes.splice(idx);
                         document.addEventListener('click', (e) => {
+                            this.weapon.addPhysics(this.scene);
                             this.weapon.animate();
-                            console.log("animation")
+                            this.weapon.attack();
                         })
                     }
                 });
