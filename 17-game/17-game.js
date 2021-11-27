@@ -41,7 +41,13 @@ class App extends Application {
             if (this.camera.stamina -1 >= 0) {
                 this.camera.stamina -= 15;
             }
-        }, 10); 
+        }, 10);
+
+        let startbtn = document.getElementById('startbtn');
+        startbtn.addEventListener('click', () => {
+            this.enableCamera();
+            document.getElementById('startbtn-txt').innerHTML = "Resume";
+        });
     }
 
     enableCamera() {
@@ -55,8 +61,10 @@ class App extends Application {
 
         if (document.pointerLockElement === this.canvas) {
             this.camera.enable(this);
+            document.getElementById('startbtn').classList.add('hidden');
         } else {
             this.camera.disable(this);
+            document.getElementById('startbtn').classList.remove('hidden');
         }
     }
 
@@ -108,6 +116,6 @@ class App extends Application {
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.querySelector('canvas');
     const app = new App(canvas);
-    const gui = new GUI();
-    gui.add(app, 'enableCamera');
+    // const gui = new GUI();
+    // gui.add(app, 'enableCamera');
 });
