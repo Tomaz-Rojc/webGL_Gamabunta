@@ -21,6 +21,7 @@ export class Camera extends Node {
         this.dashOnCooldown = false;
         this.dashCooldownStart = -1;
         this.stamina = 0;
+        this.running = false;
     }
 
     updateProjection() {
@@ -73,19 +74,35 @@ export class Camera extends Node {
                 setTimeout(function(){ c.dash = false; }, 150);
                 setTimeout(function(){ c.dashOnCooldown = false; }, c.dashCooldown);
             }
-        } 
+        }
 
         // 2: update velocity
         if (c.dash) {
+            c.running = false;
             c.maxSpeed = 50;
             vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * 1000);
+            c.fov = 1.6;
+            c.updateProjection();
         } else if (this.keys['ShiftLeft'] && c.stamina < 500) {
-            c.stamina += 20;
+            if (!c.running) {
+                c.running = true;
+                var id = setInterval(() => {
+                    if (!c.running) {
+                        clearInterval(id);
+                    } else {
+                        c.stamina += 20;
+                    }
+                }, 10);
+            }  
             c.maxSpeed = 10;
             vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);
+            
         } else {
+            c.running = false;
             c.maxSpeed = 3;
             vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);
+            c.fov = 1.5;
+            c.updateProjection();
         }
         
         // 3: if no movement, apply friction
