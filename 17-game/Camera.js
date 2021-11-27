@@ -2,6 +2,7 @@ import { vec3, mat4 } from '../../lib/gl-matrix-module.js';
 
 import { Utils } from './Utils.js';
 import { Node } from './Node.js';
+import { Weapon } from './Weapon.js';
 
 export class Camera extends Node {
 
@@ -22,6 +23,12 @@ export class Camera extends Node {
         this.dashCooldownStart = -1;
         this.stamina = 0;
         this.running = false;
+        this.jump = false;
+        this.doubleJump = false;
+        this.doubleJumpAvailable = false;
+        setInterval(() => {
+            this.translation[1] -= 0.2;
+        }, 10);
     }
 
     updateProjection() {
@@ -52,28 +59,68 @@ export class Camera extends Node {
         }
 
         // check for dash
-        if (this.keys['KeyQ']) {
-            if (!c.dashOnCooldown) {
-                c.dash = true;
-                c.dashOnCooldown = true;
+        if (this.keys['KeyQ'] && !c.dashOnCooldown) {
+            c.dash = true;
+            c.dashOnCooldown = true;
 
-                // dash loading bar:
-                c.dashCooldownStart = Date.now();
-                var elem = document.getElementById("myBar");
-                var width = 0;
-                var id = setInterval(frame, 10);
-                function frame() {
-                    if (width >= 100) {
-                        clearInterval(id);
-                    } else {
-                        const time = Date.now();
-                        width = parseInt(100 - (c.dashCooldownStart - time + c.dashCooldown)*100/c.dashCooldown);
-                        elem.style.width = width + "%";
-                    }
+            // dash loading bar:
+            c.dashCooldownStart = Date.now();
+            var elem = document.getElementById("myBar");
+            var width = 0;
+            var id = setInterval(frame, 10);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                } else {
+                    const time = Date.now();
+                    width = parseInt(100 - (c.dashCooldownStart - time + c.dashCooldown)*100/c.dashCooldown);
+                    elem.style.width = width + "%";
                 }
-                setTimeout(function(){ c.dash = false; }, 150);
-                setTimeout(function(){ c.dashOnCooldown = false; }, c.dashCooldown);
             }
+            setTimeout(function(){ c.dash = false; }, 150);
+            setTimeout(function(){ c.dashOnCooldown = false; }, c.dashCooldown);
+        }
+
+
+        // check for jump
+        if (this.keys['Space'] && !this.jump && ((1.6999 < this.translation[1] && this.translation[1] < 1.71) || 
+            (3.6999 < this.translation[1] && this.translation[1] < 3.71) || (5.6999 < this.translation[1] && this.translation[1] < 5.71))) {
+            this.doubleJumpAvailable = false;
+            this.jump = true;
+            var inAir = 0;
+            var id1 = setInterval(() => {
+                var s = (17 - inAir) * 0.04;
+                c.translation[1] += s;
+                inAir += 1;
+                if (inAir > 17) {
+                    clearInterval(id1);
+                }
+            }, 10);
+            // in 0.5 seconds you will be able to jump again
+            setTimeout(() => {
+                this.jump = false;
+            }, 500);
+        }
+
+        // check for double jump
+        if (this.keys['Space'] && this.jump && this.doubleJumpAvailable && !this.doubleJump) {
+            this.doubleJump = true;
+            this.doubleJumpAvailable = false;
+
+            // in 700 miliseconds you will be able to double jump again
+            setTimeout(() => {
+                this.doubleJump = false;
+            }, 700);
+
+            var inAir2 = 0;
+            var id1 = setInterval(() => {
+                var s = (17 - inAir2) * 0.04;
+                c.translation[1] += s;
+                inAir2 += 1;
+                if (inAir2 > 17) {
+                    clearInterval(id1);
+                }
+            }, 10);
         }
 
         // 2: update velocity
@@ -99,7 +146,7 @@ export class Camera extends Node {
             
         } else {
             c.running = false;
-            c.maxSpeed = 3;
+            c.maxSpeed = 5;
             vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);
             c.fov = 1.5;
             c.updateProjection();
@@ -121,16 +168,18 @@ export class Camera extends Node {
         }
     }
 
-    enable() {
+    enable(game, scene) {
         document.addEventListener('mousemove', this.mousemoveHandler);
         document.addEventListener('keydown', this.keydownHandler);
         document.addEventListener('keyup', this.keyupHandler);
+        document.addEventListener('keypress', (e) => this.weaponHandler(e, game));
     }
 
-    disable() {
+    disable(game, scene) {
         document.removeEventListener('mousemove', this.mousemoveHandler);
         document.removeEventListener('keydown', this.keydownHandler);
         document.removeEventListener('keyup', this.keyupHandler);
+        document.removeEventListener('keypress', (e) => this.weaponHandler(e, game));
 
         for (let key in this.keys) {
             this.keys[key] = false;
@@ -164,7 +213,35 @@ export class Camera extends Node {
     }
 
     keyupHandler(e) {
+        if (e.code == "Space") {
+            this.doubleJumpAvailable = true;
+        }
         this.keys[e.code] = false;
+    }
+
+    weaponHandler(e, game) {
+        if(e.code === 'KeyE') {
+            game.scene.nodes.some((node, idx) => {
+                if(node instanceof Weapon) {
+                    game.camera.addChild(game.weapon);
+                    game.scene.nodes.splice(idx, 1);
+                    game.weapon.addPhysics(game.scene);
+                    // Attack listener is not removed, does not really affect the game.
+                    this.attackListener = document.addEventListener('click', (e) => {
+                        if(e.button === 0) {
+                            game.weapon.attack();
+                        } else if(e.button === 2) {
+                            game.weapon.shoot();
+                        }
+                        
+                    });
+                }
+            });
+
+            // * For object transforms
+            // this.camera.children[0].translation[1]+=1;
+            // this.camera.children[0].updateTransform()
+        }
     }
 
     returnLocation() {
@@ -181,8 +258,9 @@ Camera.defaults = {
     far               : 100,
     velocity          : [0, 0, 0],
     mouseSensitivity  : 0.002,
-    maxSpeed          : 3,
+    maxSpeed          : 5,
     friction          : 0.2,
     acceleration      : 40,
-    dashCooldown      : 2000
+    dashCooldown      : 2000,
+    maxYCoordinate    : 2
 };

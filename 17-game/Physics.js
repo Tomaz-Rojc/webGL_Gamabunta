@@ -1,10 +1,18 @@
 import { vec3, mat4 } from '../../lib/gl-matrix-module.js';
 import { Camera } from './Camera.js';
+import { Collectable } from './Collectable.js';
+import { Weapon } from './Weapon.js';
 
 export class Physics {
     constructor(scene) {
         this.scene = scene;
         this.score = 0;
+        this.scene.traverse(node => {
+            if (node instanceof Camera) {
+                this.camera = node;
+            }
+        });
+        this.saleScore = 0;
     }
 
     update(dt) {
@@ -13,52 +21,14 @@ export class Physics {
                 vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
                 node.updateTransform();
                 this.scene.traverse(other => {
-                    if (node !== other) {
+                    if (node !== other && !(node instanceof Weapon) && !(other instanceof Weapon)) {
                         this.resolveCollision(node, other);
                     }
                 });
             }
         });
 
-        this.scene.traverse(node => {
-            if (node instanceof Camera) {
-                this.camera = node;
-            }
-        });
-
-        if (this.camera) {
-            const cameraLocation = this.camera.returnLocation();
-            // console.log(cameraLocation)
-            if (cameraLocation[0] <= 9.3 && cameraLocation[0] >= 8.7) {
-                if (cameraLocation[2] <= -8.7 && cameraLocation[2] >= -9.3) {
-                    this.makeInvisible(this.scene.nodes[1]);
-                }
-            }
-            if (cameraLocation[0] <= -8.7 && cameraLocation[0] >= -9.3) {
-                if (cameraLocation[2] <= -8.7 && cameraLocation[2] >= -9.3) {
-                    this.makeInvisible(this.scene.nodes[2]);
-                }
-            }
-            if (cameraLocation[0] <= -8.7 && cameraLocation[0] >= -9.3) {
-                if (cameraLocation[2] <= 9.3 && cameraLocation[2] >= 8.7) {
-                    this.makeInvisible(this.scene.nodes[3]);
-                }
-            }
-            if (cameraLocation[0] <= 9.3 && cameraLocation[0] >= 8.7) {
-                if (cameraLocation[2] <= 9.3 && cameraLocation[2] >= 8.7) {
-                    this.makeInvisible(this.scene.nodes[4]);
-                }
-            }
-        }
-        
-        let k1 = this.scene.nodes[1];
-        let k2 = this.scene.nodes[2];
-        let k3 = this.scene.nodes[3];
-        let k4 = this.scene.nodes[4];
-        this.animateCollectible(k1); 
-        this.animateCollectible(k2); 
-        this.animateCollectible(k3); 
-        this.animateCollectible(k4);
+        this.pickup();
 
     }
 
@@ -140,7 +110,6 @@ export class Physics {
         model.scale = [0, 0, 0];
         model.updateTransform();
         this.score += 1;
-        console.log(this.score);
     }
 
     animateCollectible(model) {
@@ -150,36 +119,48 @@ export class Physics {
         model.updateTransform();
     }
 
-    attack(a, scene) {
-        scene.traverse(node => {
-            if (node !== a) {
-                let b = node;
+    isColliding(a, b) {
+        const ta = a.getGlobalTransform();
+        const tb = b.getGlobalTransform();
 
-                const ta = a.getGlobalTransform();
-                const tb = b.getGlobalTransform();
+        const posa = mat4.getTranslation(vec3.create(), ta);
+        const posb = mat4.getTranslation(vec3.create(), tb);
 
-                const posa = mat4.getTranslation(vec3.create(), ta);
-                const posb = mat4.getTranslation(vec3.create(), tb);
+        const mina = vec3.add(vec3.create(), posa, a.aabb.min);
+        const maxa = vec3.add(vec3.create(), posa, a.aabb.max);
+        const minb = vec3.add(vec3.create(), posb, b.aabb.min);
+        const maxb = vec3.add(vec3.create(), posb, b.aabb.max);
 
-                const mina = vec3.add(vec3.create(), posa, a.aabb.min);
-                const maxa = vec3.add(vec3.create(), posa, a.aabb.max);
-                const minb = vec3.add(vec3.create(), posb, b.aabb.min);
-                const maxb = vec3.add(vec3.create(), posb, b.aabb.max);
+        const isColliding = this.aabbIntersection({
+            min: mina,
+            max: maxa
+        }, {
+            min: minb,
+            max: maxb
+        });
 
-                const isColliding = this.aabbIntersection({
-                    min: mina,
-                    max: maxa
-                }, {
-                    min: minb,
-                    max: maxb
-                });
+        return isColliding;
+    }
 
-                if(isColliding) {
-                    scene.nodes.splice(scene.nodes.indexOf(b), 1)
-                    console.log(scene)
-                }
-
+    attack(a) {
+        this.scene.traverse(node => {
+            if (node !== a && this.isColliding(a, node) && !(node instanceof Camera) && node.isBreakable) {
+                this.removeNode(node);
             }
         });
+    }
+
+    pickup() {
+        this.scene.traverse(node => {
+            if (node instanceof Collectable && this.isColliding(node, this.camera)) {
+                this.removeNode(node);
+                this.saleScore++;
+                document.getElementById("saleScore").innerHTML = this.saleScore;
+            }
+        });
+    }
+
+    removeNode(node) {
+        this.scene.nodes.splice(this.scene.nodes.indexOf(node), 1);
     }
 }

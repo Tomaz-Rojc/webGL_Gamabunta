@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>17 - Game example - ES6/WebGL 2.0 Examples</title>
 
-    <link rel="stylesheet" type="text/css" href="../../common/style.css">
+    <link rel="stylesheet" type="text/css" href="../../common/style.css" />
 
     <script type="text/javascript" src="../../lib/gl-matrix-min.js"></script>
     <script type="text/javascript" src="../../lib/dat.gui.min.js"></script>
     <script type="module" src="17-game.js"></script>
-</head>
-<body>
-    <div class="overlay">
-        <a class="back" href="../../index.html">Back</a>
+  </head>
+  <body>
+    <div class="overlay" id="back-btn">
+      <a class="back" href="../../index.html">Home</a>
     </div>
-    <div id="myProgress">
-        <div id="myBar"></div>
+
+    <div class="overlay" id="startbtn">
+        <button id="startbtn-txt">Play!</button>
     </div>
-    <div id="myProgress2">
-        <div id="myBar2"></div>
+
+    <div id="bar-wrapper1" class="overlay bar-wrapper">
+      <h4 id="dash-txt" class="txt">Dash</h4>
+      <div id="myProgress" class="bar">
+        <div id="myBar" class="bar"></div>
+      </div>
+    </div>
+
+    <div id="bar-wrapper2" class="overlay bar-wrapper">
+      <h4 id="stamina-txt" class="txt">Stamina</h4>
+      <div id="myProgress2" class="bar">
+        <div id="myBar2" class="bar"></div>
+      </div>
+    </div>
+
+    <div id="key-wrapper" class="overlay">
+      <span><img id="key" src="../common/images/key.png" /></span>
+      <span id="saleScore">0</span>
     </div>
     <div class="fullscreen">
-        <canvas></canvas>
+      <canvas></canvas>
     </div>
-</body>
+  </body>
 </html>
