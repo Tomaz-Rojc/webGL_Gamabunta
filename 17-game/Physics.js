@@ -110,7 +110,6 @@ export class Physics {
         model.scale = [0, 0, 0];
         model.updateTransform();
         this.score += 1;
-        console.log(this.score);
     }
 
     isColliding(a, b) {
@@ -155,7 +154,6 @@ export class Physics {
     }
 
     removeNode(node) {
-        console.log(this.scene.nodes.indexOf(node))
         this.scene.nodes.splice(this.scene.nodes.indexOf(node), 1);
     }
 }

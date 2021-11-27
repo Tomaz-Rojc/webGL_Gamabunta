@@ -2,11 +2,23 @@
   "nodes": [
     {
       "type": "camera",
-      "translation": [0, 2, 0],
+      "translation": [0, 2, -7],
       "aabb": {
-        "min": [-0.2, -1, -0.2],
-        "max": [0.2, 0.2, 0.2]
+        "min": [-0.5, -1.9, -0.5],
+        "max": [0.5, 0.5, 0.5]
       }
+    },
+    {
+      "objekt" : "ALTAR",
+      "type": "model",
+      "mesh": 0,
+      "texture": 8,
+      "aabb": {
+        "min": [-2.5, -0.5, -0.5],
+        "max": [2.5, 0.5, 0.5]
+      },
+      "translation": [0, 0.5, -11],
+      "scale": [2.5, 0.5, 0.5]
     },
     {
       "type": "model",
@@ -26,28 +38,17 @@
         "min": [-1, -1, -1],
         "max": [1, 1, 1]
       },
-      "translation": [-3, 1, -5]
+      "translation": [3, 3, -5]
     },
     {
       "type": "model",
       "mesh": 0,
-      "texture": 1,
+      "texture": 0,
       "aabb": {
         "min": [-1, -1, -1],
         "max": [1, 1, 1]
       },
-      "translation": [0, 1, 5]
-    },
-    {
-      "type": "model",
-      "mesh": 1,
-      "texture": 1,
-      "aabb": {
-        "min": [-0.5, -0.5, 0.5],
-        "max": [0.5, 0.5, 0.5]
-      },
-      "translation": [0, 0.5, -5],
-      "scale": [2, 2, 2]
+      "translation": [-5, 1, -4]
     },
     {
       "type": "model",
@@ -55,11 +56,36 @@
       "texture": 0,
       "aabb": {
         "min": [-1, -0.1, -1],
-        "max": [1, 0.1, 1]
+        "max": [1, 1, 1]
       },
-      "translation": [3, 0.1, -1],
+      "translation": [3, 1, -1],
       "rotation": [0, 1, 0],
-      "scale": [1, 0.1, 1]
+      "scale": [1, 1, 1]
+    },
+    {
+      "objekt": "GAMABUNTA",
+      "type": "model",
+      "mesh": 0,
+      "texture": 7,
+      "aabb": {
+        "min": [-3, -3, -3],
+        "max": [3, 3, 3]
+      },
+      "translation": [0, 3, -16 ],
+      "scale": [3, 3, 3]
+    },
+    {
+      "objekt": "CEILING",
+      "type": "model",
+      "mesh": 0,
+      "texture": 6,
+      "aabb": {
+        "min": [-20, 0, -20],
+        "max": [20, 1, 20]
+      },
+      "translation": [0, 15, 0],
+      "scale": [20, 1, 20],
+      "isBreakable": false
     },
     {
       "objekt":"STONE FLOOR",
@@ -67,38 +93,13 @@
       "mesh": 0,
       "texture": 4,
       "aabb": {
-        "min": [-1, -1, -1],
-        "max": [1, 1, 1]
+        "min": [-20, -5, -20],
+        "max": [20, 0, 20]
       },
       "translation": [0, 0, 0],
       "scale": [20, 0, 20],
       "isBreakable": false
     },
-    {
-        "objekt": "GAMABUNTA",
-        "type": "model",
-        "mesh": 0,
-        "texture": 7,
-        "aabb": {
-          "min": [-10, -10, -2],
-          "max": [10, 10, 2]
-        },
-        "translation": [25, 0, 0],
-        "scale": [10, 10, 2]
-      },
-    {
-        "objekt": "CEILING",
-        "type": "model",
-        "mesh": 0,
-        "texture": 6,
-        "aabb": {
-          "min": [-1, -0.1, -1],
-          "max": [1, 0.1, 1]
-        },
-        "translation": [0, 50, 0],
-        "scale": [100, 0, 100],
-        "isBreakable": false
-      },
     {
       "objekt":"WALL1",
       "type": "model",
@@ -108,7 +109,7 @@
         "min": [-20, -10, -1],
         "max": [20, 10, 1]
       },
-      "translation": [0, 0, 20],
+      "translation": [0, 10, 20],
       "scale": [20, 10, 1],
       "isBreakable" : false
     },
@@ -121,7 +122,7 @@
         "min": [-20, -10, -1],
         "max": [20, 10, 1]
       },
-      "translation": [0, 0, -20],
+      "translation": [0, 10, -20],
       "scale": [20, 10, 1],
       "isBreakable" : false
     },
@@ -134,7 +135,7 @@
         "min": [-1, -10, -20],
         "max": [1, 10, 20]
       },
-      "translation": [20, 0, 0],
+      "translation": [20, 10, 0],
       "scale": [1, 10, 20],
       "isBreakable" : false
     },
@@ -147,7 +148,7 @@
         "min": [-1, -10, -20],
         "max": [1, 10, 20]
       },
-      "translation": [-20, 0, 0],
+      "translation": [-20, 10, 0],
       "scale": [1, 10, 20],
       "isBreakable" : false
     },
@@ -159,42 +160,55 @@
         "min": [-1, -1, -1],
         "max": [1, 1, 1]
       },
-      "translation": [1, 0, -2],
-      "scale": [0.5, 0.5, 1]
+      "translation": [-1.2, 1.1, -11],
+      "scale": [0.7, 0.1, 0.1]
     },
-
     {
-      "type": "collectable",
+      "type": "weapon",
       "mesh": 0,
-      "texture": 3,
+      "texture": 2,
       "aabb": {
         "min": [-1, -1, -1],
         "max": [1, 1, 1]
       },
-      "translation": [-5, 0.5, -4],
-      "scale": [0.3, 0.3, 0.3]
-    },
-    {
-      "type": "collectable",
-      "mesh": 0,
-      "texture": 3,
-      "aabb": {
-        "min": [-1, -1, -1],
-        "max": [1, 1, 1]
-      },
-      "translation": [-6, 0.5, -3],
-      "scale": [0.3, 0.3, 0.3]
+      "translation": [1.2, 1.1, -11],
+      "scale": [0.7, 0.1, 0.1]
     },
     {
       "type": "collectable",
       "mesh": 0,
       "texture": 3,
       "aabb": {
-        "min": [-1, -1, -1],
-        "max": [1, 1, 1]
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
       },
-      "translation": [-7, 0.5, -5],
-      "scale": [0.3, 0.3, 0.3]
+      "translation": [-5, 1, -4],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [-3, 1, -4],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [-7, 1, -4],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
     }
   ],
   "textures": [
@@ -205,7 +219,8 @@
     "../../common/images/stonefloor.png",
     "../../common/images/wall.png",
     "../../common/images/ceiling.png",
-    "../../common/images/gamabunta.png"
+    "../../common/images/gamabunta.png",
+    "../../common/images/altar.png"
   ],
   "meshes": [
     "../../common/models/cube.json",
