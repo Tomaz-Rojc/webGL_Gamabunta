@@ -1,6 +1,7 @@
 import { vec3, mat4 } from '../../lib/gl-matrix-module.js';
 import { Camera } from './Camera.js';
 import { Collectable } from './Collectable.js';
+import { Weapon } from './Weapon.js';
 
 export class Physics {
     constructor(scene) {
@@ -20,7 +21,7 @@ export class Physics {
                 vec3.scaleAndAdd(node.translation, node.translation, node.velocity, dt);
                 node.updateTransform();
                 this.scene.traverse(other => {
-                    if (node !== other) {
+                    if (node !== other && !(node instanceof Weapon) && !(other instanceof Weapon)) {
                         this.resolveCollision(node, other);
                     }
                 });
@@ -136,11 +137,8 @@ export class Physics {
     }
 
     attack(a) {
-        console.log(a)
         this.scene.traverse(node => {
-            console.log(node, node !== a, this.isColliding(a, node), !(node instanceof Camera))
-            if (node !== a && this.isColliding(a, node) && !(node instanceof Camera)) {
-                console.log(node)
+            if (node !== a && this.isColliding(a, node) && !(node instanceof Camera) && node.isBreakable) {
                 this.removeNode(node);
             }
         });
