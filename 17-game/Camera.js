@@ -100,7 +100,7 @@ export class Camera extends Node {
             
         } else {
             c.running = false;
-            c.maxSpeed = 3;
+            c.maxSpeed = 5;
             vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);
             c.fov = 1.5;
             c.updateProjection();
@@ -204,7 +204,7 @@ Camera.defaults = {
     far               : 100,
     velocity          : [0, 0, 0],
     mouseSensitivity  : 0.002,
-    maxSpeed          : 3,
+    maxSpeed          : 5,
     friction          : 0.2,
     acceleration      : 40,
     dashCooldown      : 2000,
