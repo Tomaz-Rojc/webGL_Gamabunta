@@ -90,7 +90,6 @@ export class Camera extends Node {
             (5.6999 < this.translation[1] && this.translation[1] < 5.71) ||
             (7.6999 < this.translation[1] && this.translation[1] < 7.71) ||
             (9.6999 < this.translation[1] && this.translation[1] < 9.71))) {
-                console.log("jump")
             this.doubleJumpAvailable = false;
             this.jump = true;
             var inAir = 0;
