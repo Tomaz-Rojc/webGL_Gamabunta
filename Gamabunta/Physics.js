@@ -5,6 +5,8 @@ import { Weapon } from './Weapon.js';
 
 let isSaved = false;
 let gamabuntaHP = 100;
+const oof = new Audio('../common/audio/oof.mp3');
+const hitmarker = new Audio('../common/audio/hitmarker.mp3');
 
 export class Physics {
     constructor(scene) {
@@ -20,8 +22,9 @@ export class Physics {
         });
         this.saleScore = 0;
         
-        this.requiredKeys = 0;
+        this.requiredKeys = 5;
         this.hpBar = document.getElementById('myBar3');
+        this.isAlive = true;
     }
 
     update(dt) {
@@ -41,6 +44,7 @@ export class Physics {
                             this.savedSale.translation[0] = [-19.08];
                             this.savedSale.updateTransform();
                             gamabuntaHP = 100;
+                            new Audio('../common/audio/inception.mp3').play();
                             document.getElementById('gamabuntaHP').classList.remove('hidden');
                         }
                     }
@@ -165,16 +169,25 @@ export class Physics {
     attack(a) {
         this.scene.traverse(node => {
             if (node !== a && this.isColliding(a, node) && !(node instanceof Camera) && node.isBreakable) {
+                hitmarker.play();
                 this.removeNode(node);
                 return;
             }
-            if(node !== a && this.isColliding(a, node) && !(node instanceof Camera) && node.isGamabunta) {
+            if(node !== a && this.isColliding(a, node) && !(node instanceof Camera) && node.isGamabunta && this.isAlive) {
                 if(isSaved) {
+                    oof.play();
                     gamabuntaHP -= Math.random();
                     this.hpBar.style.width = parseInt(gamabuntaHP) + '%';
                     if(gamabuntaHP <= 0) {
+                        this.isAlive = false;
                         document.getElementById('boss-txt').innerHTML = 'Gamabunta has been defeated, uzem si ga lagano.'
                         document.getElementById("finish-btn").style.display = "block";
+                        let win = new Audio('../common/audio/fort.mp3');
+                        win.play();
+                        win.volume = 0.2;
+                        win.addEventListener("ended", () => {
+                            window.location.href = "../finish.html";
+                        });
                     }
                 }
             }
@@ -184,8 +197,7 @@ export class Physics {
     pickup() {
         this.scene.traverse(node => {
             if (node instanceof Collectable && this.isColliding(node, this.camera)) {
-                let coin = new Audio('../coin.mp3');
-                coin.play();
+                new Audio('../common/audio/coin.mp3').play();
                 this.removeNode(node);
                 this.saleScore++;
                 document.getElementById("saleScore").innerHTML = this.saleScore;

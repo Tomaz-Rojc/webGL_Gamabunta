@@ -47,6 +47,7 @@ class App extends Application {
         startbtn.addEventListener('click', () => {
             this.enableCamera();
             document.getElementById('startbtn-txt').innerHTML = "Resume";
+            new Audio('../common/audio/amogus.mp3').play();
         });
     }
 

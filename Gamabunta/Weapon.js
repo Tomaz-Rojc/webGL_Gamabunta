@@ -1,6 +1,8 @@
 import { Node } from './Node.js';
 import { Physics } from './Physics.js';
 
+const att = new Audio('../common/audio/att.mp3');
+
 export class Weapon extends Node {
 
     constructor(mesh, image, options) {
@@ -98,6 +100,7 @@ export class Weapon extends Node {
 
     attack() {
         if(!this.melee) {
+            att.play();
             this.melee = true;
             this.animateAttack();
         }
@@ -105,6 +108,7 @@ export class Weapon extends Node {
 
     shoot() {
         if(!this.shooting) {
+            att.play();
             this.shooting = true;
             this.animateShot();
         }
@@ -112,6 +116,7 @@ export class Weapon extends Node {
 
     boomerang() {
         if(!this.boomeranging) {
+            att.play();
             this.boomeranging = true;
             this.animateBoomerang();
         }

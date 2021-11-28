@@ -31,6 +31,9 @@ export class Camera extends Node {
                 this.translation[1] -= 0.05;
             }
         }, 5);
+        this.dashsound = new Audio('../common/audio/dash.mp3');
+        this.jumpsound = new Audio('../common/audio/jump.mp3');
+        this.runsound = new Audio('../common/audio/formula.mp3');
     }
 
     updateProjection() {
@@ -62,6 +65,7 @@ export class Camera extends Node {
 
         // check for dash
         if (this.keys['KeyQ'] && !c.dashOnCooldown) {
+            this.dashsound.play();
             c.dash = true;
             c.dashOnCooldown = true;
 
@@ -90,6 +94,7 @@ export class Camera extends Node {
             (5.6999 < this.translation[1] && this.translation[1] < 5.71) ||
             (7.6999 < this.translation[1] && this.translation[1] < 7.71) ||
             (9.6999 < this.translation[1] && this.translation[1] < 9.71))) {
+            this.jumpsound.play();
             this.doubleJumpAvailable = false;
             this.jump = true;
             var inAir = 0;
@@ -128,6 +133,10 @@ export class Camera extends Node {
             c.fov = 1.6;
             c.updateProjection();
         } else if (this.keys['ShiftLeft'] && c.stamina < 500) {
+            if(c.stamina < 450) {
+                this.runsound.play();
+            }
+            
             if (!c.running) {
                 c.running = true;
                 var id = setInterval(() => {
@@ -142,6 +151,8 @@ export class Camera extends Node {
             vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);
             
         } else {
+            this.runsound.pause();
+            // this.runsound.currentTime = 0;
             c.running = false;
             c.maxSpeed = 5;
             vec3.scaleAndAdd(c.velocity, c.velocity, acc, dt * c.acceleration);

@@ -3,7 +3,7 @@ body, html {
     padding: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
+@import url('./fonts/ReggaeOne-Regular.ttf');
 
 * {
     font-family: 'Reggae One', cursive;
