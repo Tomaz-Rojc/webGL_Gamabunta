@@ -27,8 +27,10 @@ export class Camera extends Node {
         this.doubleJump = false;
         this.doubleJumpAvailable = false;
         setInterval(() => {
-            this.translation[1] -= 0.2;
-        }, 10);
+            if (!this.jump && !this.doubleJump) {
+                this.translation[1] -= 0.05;
+            }
+        }, 5);
     }
 
     updateProjection() {
@@ -89,35 +91,27 @@ export class Camera extends Node {
             this.jump = true;
             var inAir = 0;
             var id1 = setInterval(() => {
-                var s = (17 - inAir) * 0.04;
+                var s = (30 - inAir) * 0.005;
                 c.translation[1] += s;
                 inAir += 1;
-                if (inAir > 17) {
+                if (inAir > 30) {
+                    this.jump = false;
                     clearInterval(id1);
                 }
-            }, 10);
-            // in 0.5 seconds you will be able to jump again
-            setTimeout(() => {
-                this.jump = false;
-            }, 500);
+            }, 10);            
         }
 
         // check for double jump
         if (this.keys['Space'] && this.jump && this.doubleJumpAvailable && !this.doubleJump) {
             this.doubleJump = true;
             this.doubleJumpAvailable = false;
-
-            // in 700 miliseconds you will be able to double jump again
-            setTimeout(() => {
-                this.doubleJump = false;
-            }, 700);
-
             var inAir2 = 0;
             var id1 = setInterval(() => {
-                var s = (17 - inAir2) * 0.04;
+                var s = (30 - inAir2) * 0.005;
                 c.translation[1] += s;
                 inAir2 += 1;
-                if (inAir2 > 17) {
+                if (inAir2 > 30) {
+                    this.doubleJump = false;
                     clearInterval(id1);
                 }
             }, 10);
