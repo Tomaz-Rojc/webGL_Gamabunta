@@ -9,6 +9,7 @@ export class Weapon extends Node {
         this.image = image;
         this.shooting = false;
         this.boomeranging = false;
+        this.melee = false;
         this.weaponType = options.weaponType;
     }
 
@@ -18,47 +19,63 @@ export class Weapon extends Node {
     }
 
     reset() {
-        this.translation[0] = 3;
-        this.translation[1] = 0;
-        this.translation[2] = -4;
+        if(this.weaponType === 'melee') {
+            this.translation[0] = 2;
+            this.translation[1] = -1;
+            this.translation[2] = -1;
+        } else {
+            this.translation[0] = 4;
+            this.translation[1] = 0;
+            this.translation[2] = -4;
+        }
         this.updateTransform();
     }
 
     animateAttack() {
         let frame = 0;
         const anim = setInterval(() => {
-            this.rotation[0] = 0;
+            this.rotation[1] += 0.5;
             this.updateTransform();
+            this.physics.attack(this);
             frame += 1;
             if(frame >= 60)
                 clearInterval(anim);
         }, 1);
+
+        setTimeout(() => {
+            this.melee = false;
+            this.reset();
+        }, 300)
     }
 
     animateBoomerang() {
-        let frame = -30;
+        let frame = -60;
+        this.rotation = [0,0,0];
         const anim = setInterval(() => {
             frame += 1;
             if(frame <= 0) {
-                this.translation[0] -= 0.2;
-                this.translation[2] -= 0.6;
+                this.translation[0] -= 0.05;
+                this.translation[2] -= 0.15;
             } else {
-                this.translation[0] += 0.2;
-                this.translation[2] += 0.6;
+                this.translation[0] += 0.05;
+                this.translation[2] += 0.15;
             }
+            this.rotation[0] += 0.5;
+            this.rotation[1] += 0.5;
             this.updateTransform();
-            if(frame >= 30)
+            this.physics.attack(this);
+            if(frame >= 60)
                 clearInterval(anim);
         }, 1);
 
         setTimeout(() => {
-            this.scale = [0.5,0.5,1];
             this.boomeranging = false;
         }, 1000)
     }
 
     animateShot() {
         let frame = -30;
+        this.translation = [0,0,0]
         const anim = setInterval(() => {
             frame += 1;
             this.translation[0] -= 0.2;
@@ -73,15 +90,17 @@ export class Weapon extends Node {
         }, 1);
 
         setTimeout(() => {
-            this.scale = [0.5,0.5,1];
+            this.scale = [0.3, 5, 0.3];
             this.shooting = false;
             this.reset();
         }, 1000)
     }
 
     attack() {
-        this.animateAttack();
-        this.physics.attack(this);
+        if(!this.melee) {
+            this.melee = true;
+            this.animateAttack();
+        }
     }
 
     shoot() {

@@ -549,27 +549,41 @@
       "isBreakable" : false
     },
     {
+        "type": "weapon",
+        "mesh": 0,
+        "texture": 17,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [-1.5, 1.1, -11],
+        "scale": [0.7, 0.01, 0.7],
+        "rotation": [0, 0, 0],
+        "weaponType": "melee"
+      },
+    {
       "type": "weapon",
-      "mesh": 0,
-      "texture": 2,
+      "mesh": 1,
+      "texture": 16,
       "aabb": {
         "min": [-1, -1, -1],
         "max": [1, 1, 1]
       },
-      "translation": [-1.2, 1.1, -11],
-      "scale": [0.7, 0.1, 0.1],
+      "translation": [0, 1.1, -11],
+      "scale": [0.3, 5, 0.3],
+      "rotation": [0, 0, 0],
       "weaponType": "projectile"
     },
     {
       "type": "weapon",
       "mesh": 0,
-      "texture": 2,
+      "texture": 15,
       "aabb": {
         "min": [-1, -1, -1],
         "max": [1, 1, 1]
       },
-      "translation": [1.2, 1.1, -11],
-      "scale": [0.7, 0.1, 0.1],
+      "translation": [1.5, 1.1, -11],
+      "scale": [0.1, 1.3, 0.1],
       "weaponType": "boomerang"
     },
     {
@@ -689,7 +703,10 @@
     "../../common/images/trunk.jpg",
     "../../common/images/tree.jpg",
     "../../common/images/prison-sale.png",
-    "../../common/images/saved-sale.jpg"
+    "../../common/images/saved-sale.jpg",
+    "../../common/images/red.jpg",
+    "../../common/images/blu.jpg",
+    "../../common/images/green.jpg"
   ],
   "meshes": [
     "../../common/models/cube.json",
