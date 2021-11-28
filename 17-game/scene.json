@@ -18,7 +18,7 @@
         "max": [2.5, 0.5, 0.5]
       },
       "translation": [0, 0.5, -11],
-      "scale": [2.5, 0.5, 0.5],
+      "scale": [2.5, 0.5, 1],
       "isBreakable": false
     },
     {
@@ -137,6 +137,126 @@
       "translation": [-6, 7, 18],
       "scale": [3, 1, 1],
       "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 1, 0],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 3, -2],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 5, -4],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [6, 1, -4],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [6, 3, -4],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [-6, 1, 6]
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [-3, 1, 6]
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [0, 1, 6]
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [3, 1, 6]
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [6, 1, 6]
     },
     {
       "objekt" : "WOODEN-BOX",
@@ -659,6 +779,42 @@
       "isBreakable" : false
     },
     {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [18, 7, -4],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [6, 5, -4],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [-3, 1, 6],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
         "objekt":"CHALLE SALE",
         "type": "model",
         "mesh": 0,
@@ -706,7 +862,8 @@
     "../../common/images/saved-sale.jpg",
     "../../common/images/red.jpg",
     "../../common/images/blu.jpg",
-    "../../common/images/green.jpg"
+    "../../common/images/green.jpg",
+    "../../common/images/gift.jpg"
   ],
   "meshes": [
     "../../common/models/cube.json",
