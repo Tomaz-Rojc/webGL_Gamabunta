@@ -18,7 +18,7 @@
         "max": [2.5, 0.5, 0.5]
       },
       "translation": [0, 0.5, -11],
-      "scale": [2.5, 0.5, 0.5],
+      "scale": [2.5, 0.5, 1],
       "isBreakable": false
     },
     {
@@ -30,7 +30,7 @@
         "min": [-1, -1, -1],
         "max": [1, 1, 1]
       },
-      "translation": [0, 0.5, 0],
+      "translation": [0, 0.5, 4],
       "scale": [0.4, 0.5, 0.4],
       "isBreakable": false
     },
@@ -43,7 +43,7 @@
         "min": [-1.5, -0.5, -1.5],
         "max": [1.5, 0.5, 1.5]
       },
-      "translation": [0, 1.5, 0],
+      "translation": [0, 1.5, 4],
       "scale": [1.5, 0.5, 1.5],
       "isBreakable": false
     },
@@ -56,7 +56,7 @@
         "min": [-1.25, -0.5, -1.25],
         "max": [1.25, 0.5, 1.25]
       },
-      "translation": [0, 2.5, 0],
+      "translation": [0, 2.5, 4],
       "scale": [1.25, 0.5, 1.25],
       "isBreakable": false
     },
@@ -69,7 +69,7 @@
         "min": [-1, -0.5, -1],
         "max": [1, 0.5, 1]
       },
-      "translation": [0, 3.5, 0],
+      "translation": [0, 3.5, 4],
       "scale": [1, 0.5, 1],
       "isBreakable": false
     },
@@ -82,7 +82,7 @@
         "min": [-0.75, -0.5, -0.75],
         "max": [0.75, 0.5, 0.75]
       },
-      "translation": [0, 4.5, 0],
+      "translation": [0, 4.5, 4],
       "scale": [0.75, 0.5, 0.75],
       "isBreakable": false
     },
@@ -95,7 +95,7 @@
         "min": [-0.35, -0.5, -0.35],
         "max": [0.35, 0.5, 0.35]
       },
-      "translation": [0, 5.5, 0],
+      "translation": [0, 5.5, 4],
       "scale": [0.35, 0.5, 0.35],
       "isBreakable": false
     },
@@ -137,6 +137,139 @@
       "translation": [-6, 7, 18],
       "scale": [3, 1, 1],
       "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-5, -1, -5],
+        "max": [5, 1, 5]
+      },
+      "translation": [0, 9, 10],
+      "scale": [5, 1, 5],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 1, 0],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 3, -2],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 5, -4],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [6, 1, -4],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "METAL-BOX",
+      "type": "model",
+      "mesh": 0,
+      "texture": 9,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [6, 3, -4],
+      "scale": [1, 1, 1],
+      "isBreakable": false
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [-6, 1, 0]
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [-3, 1, 0]
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [0, 1, 0]
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [3, 1, 0]
+    },
+    {
+      "objekt" : "GIFT",
+      "type": "model",
+      "mesh": 0,
+      "texture": 18,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [6, 1, 0]
     },
     {
       "objekt" : "WOODEN-BOX",
@@ -480,7 +613,7 @@
         "min": [-20, 0, -20],
         "max": [20, 1, 20]
       },
-      "translation": [0, 15, 0],
+      "translation": [0, 17, 0],
       "scale": [20, 1, 20],
       "isBreakable": false
     },
@@ -663,6 +796,150 @@
       "isBreakable" : false
     },
     {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [18, 7, -4],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [6, 5, -4],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [-3, 1, 0],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [0, 11, 10],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [0, 11, 12],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [0, 11, 8],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [2, 11, 10],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [-2, 11, 10],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [-2, 11, 8],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [-2, 11, 12],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [2, 11, 8],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [2, 11, 12],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
         "objekt":"CHALLE SALE",
         "type": "model",
         "mesh": 0,
@@ -710,7 +987,8 @@
     "../../common/images/saved-sale.jpg",
     "../../common/images/red.jpg",
     "../../common/images/blu.jpg",
-    "../../common/images/green.jpg"
+    "../../common/images/green.jpg",
+    "../../common/images/gift.jpg"
   ],
   "meshes": [
     "../../common/models/cube.json",

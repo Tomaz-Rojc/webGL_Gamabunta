@@ -21,8 +21,4 @@ export class Collectable extends Node {
             this.updateTransform();
         }, 60);
     }
-
-    pickup() {
-
-    }
 }
