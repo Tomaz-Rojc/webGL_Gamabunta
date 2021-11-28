@@ -3,6 +3,9 @@ import { Camera } from './Camera.js';
 import { Collectable } from './Collectable.js';
 import { Weapon } from './Weapon.js';
 
+let isSaved = false;
+let gamabuntaHP = 100;
+
 export class Physics {
     constructor(scene) {
         this.scene = scene;
@@ -15,8 +18,10 @@ export class Physics {
                 this.savedSale = node;
             }
         });
-        this.isSaved = false;
         this.saleScore = 0;
+        
+        this.requiredKeys = 0;
+        this.hpBar = document.getElementById('myBar3');
     }
 
     update(dt) {
@@ -28,16 +33,15 @@ export class Physics {
                     if (node !== other && !(node instanceof Weapon) && !(other instanceof Weapon)) {
                         this.resolveCollision(node, other);
                     }
-                    if(other.isPrisoner && this.saleScore >= 5 && !this.isSaved) {
+                    if(other.isPrisoner && this.saleScore >= this.requiredKeys && !isSaved) {
                         if(this.isColliding(node, other)) {
-                            this.isSaved = true;
+                            isSaved = true;
                             other.translation[0] = -20;
                             other.updateTransform();
                             this.savedSale.translation[0] = [-19.08];
                             this.savedSale.updateTransform();
-                            this.gamabuntaHP = 100;
-                            console.log(this.gamabuntaHP)
-                            document.getElementById("finish-btn").style.display = "block";
+                            gamabuntaHP = 100;
+                            document.getElementById('gamabuntaHP').classList.remove('hidden');
                         }
                     }
                 });
@@ -163,6 +167,16 @@ export class Physics {
             if (node !== a && this.isColliding(a, node) && !(node instanceof Camera) && node.isBreakable) {
                 this.removeNode(node);
                 return;
+            }
+            if(node !== a && this.isColliding(a, node) && !(node instanceof Camera) && node.isGamabunta) {
+                if(isSaved) {
+                    gamabuntaHP -= Math.random();
+                    this.hpBar.style.width = parseInt(gamabuntaHP) + '%';
+                    if(gamabuntaHP <= 0) {
+                        document.getElementById('boss-txt').innerHTML = 'Gamabunta has been defeated, uzem si ga lagano.'
+                        document.getElementById("finish-btn").style.display = "block";
+                    }
+                }
             }
         });
     }

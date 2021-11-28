@@ -601,7 +601,8 @@
       },
       "translation": [0, 3, -16 ],
       "scale": [3, 3, 3],
-      "isBreakable": false
+      "isBreakable": false,
+      "isGamabunta": true
     },
     {
       "objekt": "CEILING",
