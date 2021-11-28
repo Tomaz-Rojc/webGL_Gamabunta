@@ -15,7 +15,7 @@ export class Physics {
                 this.savedSale = node;
             }
         });
-        
+        this.isSaved = false;
         this.saleScore = 0;
     }
 
@@ -28,12 +28,15 @@ export class Physics {
                     if (node !== other && !(node instanceof Weapon) && !(other instanceof Weapon)) {
                         this.resolveCollision(node, other);
                     }
-                    if(other.isPrisoner && this.saleScore >= 3) {
+                    if(other.isPrisoner && this.saleScore >= 3 && !this.isSaved) {
                         if(this.isColliding(node, other)) {
+                            this.isSaved = true;
                             other.translation[0] = -20;
                             other.updateTransform();
                             this.savedSale.translation[0] = [-19.08];
                             this.savedSale.updateTransform();
+                            this.gamabuntaHP = 100;
+                            console.log(this.gamabuntaHP)
                         }
                     }
                 });
