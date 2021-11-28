@@ -34,6 +34,7 @@ export class Camera extends Node {
         this.dashsound = new Audio('../common/audio/dash.mp3');
         this.jumpsound = new Audio('../common/audio/jump.mp3');
         this.runsound = new Audio('../common/audio/formula.mp3');
+        this.runsound.volume = 0.5;
     }
 
     updateProjection() {
