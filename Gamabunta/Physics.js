@@ -170,8 +170,8 @@ export class Physics {
     pickup() {
         this.scene.traverse(node => {
             if (node instanceof Collectable && this.isColliding(node, this.camera)) {
-                let coin = new Audio('../coin.mp3');
-                coin.play();
+                let key = new Audio('../key.mp3');
+                key.play();
                 this.removeNode(node);
                 this.saleScore++;
                 document.getElementById("saleScore").innerHTML = this.saleScore;
