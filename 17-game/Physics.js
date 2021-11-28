@@ -37,6 +37,7 @@ export class Physics {
                             this.savedSale.updateTransform();
                             this.gamabuntaHP = 100;
                             console.log(this.gamabuntaHP)
+                            document.getElementById("finish-btn").style.display = "block";
                         }
                     }
                 });
