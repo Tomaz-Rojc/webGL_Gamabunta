@@ -70,6 +70,35 @@ a.back:hover {
     background-color: rgb(56, 255, 122);
   }
 
+  #myProgress3 {
+    width: 100%;
+    background-color: rgba(197, 197, 197, 0.562);
+    border: 2px solid black;
+    height: 20px;
+    margin-top: 28px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  #gamabuntaHP {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      display: flex;
+      margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  #gamabuntaHP *{
+
+  }
+  
+  #myBar3 {
+    width: 100%;
+    height: 20px;
+    background-color: rgb(255, 56, 56);
+  }
+
   #banner {
       position: relative;
   }
@@ -216,5 +245,9 @@ a.back:hover {
 }
 
 .hidden{
-    display: none;
+    display: none !important;
+}
+
+#boss-txt {
+    color: white;
 }

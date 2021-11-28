@@ -69,5 +69,6 @@ Node.defaults = {
     },
     isBreakable: true,
     isPrisoner: false,
-    isChalleSale: false
+    isChalleSale: false,
+    isGamabunta: false
 };
