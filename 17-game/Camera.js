@@ -219,28 +219,48 @@ export class Camera extends Node {
         this.keys[e.code] = false;
     }
 
+    weaponCodes = [
+        'melee',
+        'projectile',
+        'boomerang'
+    ]
+
     weaponHandler(e, game) {
-        if(e.code === 'KeyE') {
+        if(e.code === 'Digit1' || e.code === 'Digit2' || e.code === 'Digit3') {
+            let weaponCode;
+            switch(e.code) {
+                case 'Digit1':
+                    weaponCode = this.weaponCodes[0];
+                    break;
+                case 'Digit2':
+                    weaponCode = this.weaponCodes[1];
+                    break;
+                case 'Digit3':
+                    weaponCode = this.weaponCodes[2];
+                    break;
+            }
+
             game.scene.nodes.some((node, idx) => {
-                if(node instanceof Weapon) {
+                if(node instanceof Weapon && node.weaponType === weaponCode) {
+                    game.weapon = node;
                     game.camera.addChild(game.weapon);
                     game.scene.nodes.splice(idx, 1);
                     game.weapon.addPhysics(game.scene);
+                    game.weapon.reset();
                     // Attack listener is not removed, does not really affect the game.
                     this.attackListener = document.addEventListener('click', (e) => {
                         if(e.button === 0) {
-                            game.weapon.attack();
-                        } else if(e.button === 2) {
-                            game.weapon.shoot();
+                            switch(game.weapon.weaponType) {
+                                case 'projectile': 
+                                    game.weapon.shoot();
+                                    break;
+                                case 'boomerang':
+                                    game.weapon.boomerang();
+                            }
                         }
-                        
                     });
                 }
             });
-
-            // * For object transforms
-            // this.camera.children[0].translation[1]+=1;
-            // this.camera.children[0].updateTransform()
         }
     }
 

@@ -11,7 +11,11 @@ export class Physics {
             if (node instanceof Camera) {
                 this.camera = node;
             }
+            if(node.isChalleSale) {
+                this.savedSale = node;
+            }
         });
+        
         this.saleScore = 0;
     }
 
@@ -23,6 +27,14 @@ export class Physics {
                 this.scene.traverse(other => {
                     if (node !== other && !(node instanceof Weapon) && !(other instanceof Weapon)) {
                         this.resolveCollision(node, other);
+                    }
+                    if(other.isPrisoner && this.saleScore >= 3) {
+                        if(this.isColliding(node, other)) {
+                            other.translation[0] = -20;
+                            other.updateTransform();
+                            this.savedSale.translation[0] = [-19.08];
+                            this.savedSale.updateTransform();
+                        }
                     }
                 });
             }
