@@ -4,7 +4,12 @@ Please save Challe Sale from the evil toad sage.
 
 ## Instructions
 
+Please run the game inside a chromium based browser; Firefox is not supported.
 Read the instructions to play in the About section.
+
+## Deployment
+
+The game is deployed to https://gamabunta.herokuapp.com/
 
 ## Run the game
 
