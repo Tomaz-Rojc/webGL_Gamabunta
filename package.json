@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && nodemon --watch ../* -e js,json,html,css server"
+    "start": "cd server && node server",
+    "dev": "cd server && nodemon --watch ../* -e js,json,html,css server"
   },
   "repository": {
     "type": "git",
