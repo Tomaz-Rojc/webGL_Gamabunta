@@ -160,12 +160,304 @@
       },
       "translation": [-10, 1, -4]
     },
-      {
-          "type": "model",
-          "mesh": 2,
-          "texture": 3
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
       },
-      {
+      "translation": [18, 1, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 3, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 5, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 1, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 3, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 5, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 1, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 3, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 5, 18]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 1, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 3, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 5, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 1, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 3, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 5, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 1, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 3, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 5, 16]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 1, 14]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 3, 14]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [18, 5, 14]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 1, 14]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 3, 14]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [16, 5, 14]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 1, 14]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 3, 14]
+    },
+    {
+      "objekt" : "WOODEN-BOX-stack",
+      "type": "model",
+      "mesh": 0,
+      "texture": 10,
+      "aabb": {
+        "min": [-1, -1, -1],
+        "max": [1, 1, 1]
+      },
+      "translation": [14, 5, 14]
+    },
+    {
       "objekt": "GAMABUNTA",
       "type": "model",
       "mesh": 0,
@@ -197,7 +489,7 @@
       "mesh": 0,
       "texture": 4,
       "aabb": {
-        "min": [-20, -5, -20],
+        "min": [-20, -20, -20],
         "max": [20, 0, 20]
       },
       "translation": [0, 0, 0],
@@ -317,7 +609,55 @@
         "min": [-0.5, -0.5, -0.5],
         "max": [0.5, 0.5, 0.5]
       },
+      "translation": [-10, 3, -4],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
       "translation": [-4, 9, 18],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [14, 3, 14],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [16, 5, 16],
+      "scale": [0.3, 0.3, 0.3],
+      "isBreakable" : false
+    },
+    {
+      "type": "collectable",
+      "mesh": 0,
+      "texture": 3,
+      "aabb": {
+        "min": [-0.5, -0.5, -0.5],
+        "max": [0.5, 0.5, 0.5]
+      },
+      "translation": [18, 1, 14],
       "scale": [0.3, 0.3, 0.3],
       "isBreakable" : false
     },
