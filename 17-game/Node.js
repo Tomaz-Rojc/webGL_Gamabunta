@@ -67,5 +67,7 @@ Node.defaults = {
         min: [0, 0, 0],
         max: [0, 0, 0],
     },
-    isBreakable: true
+    isBreakable: true,
+    isPrisoner: false,
+    isChalleSale: false
 };

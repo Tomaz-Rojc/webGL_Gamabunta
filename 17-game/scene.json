@@ -8,6 +8,70 @@
         "max": [0.5, 0.5, 0.5]
       }
     },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 0,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [3, 1, -5]
+      },
+      {
+          "type": "model",
+          "mesh": 0,
+          "texture": 0,
+          "aabb": {
+            "min": [-1, -1, -1],
+            "max": [1, 1, 1]
+          },
+          "translation": [-3, 1, -5]
+        },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 1,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [0, 1, 5]
+      },
+      {
+        "type": "model",
+        "mesh": 1,
+        "texture": 1,
+        "aabb": {
+          "min": [-0.5, -0.5, 0.5],
+          "max": [0.5, 0.5, 0.5]
+        },
+        "translation": [0, 0.5, -5],
+        "scale": [2, 2, 2]
+      },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 0,
+        "aabb": {
+          "min": [-1, -0.1, -1],
+          "max": [1, 0.1, 1]
+        },
+        "translation": [3, 0.1, -1],
+        "rotation": [0, 1, 0],
+        "scale": [1, 0.1, 1]
+      },
+      {
+        "type": "model",
+        "mesh": 0,
+        "texture": 2,
+        "aabb": {
+          "min": [-1, -0.1, -1],
+          "max": [1, 0.1, 1]
+        },
+        "translation": [0, 0, 0],
+        "scale": [10, 0, 10]
+      },
     {
       "objekt" : "ALTAR",
       "type": "model",
@@ -161,6 +225,33 @@
       "translation": [-10, 1, -4]
     },
     {
+        "type": "weapon",
+        "mesh": 0,
+        "texture": 2,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [1, 0, -2],
+        "scale": [0.5, 0.5, 1]
+    },
+    {
+        "type": "model",
+        "mesh": 0,
+        "texture": 4,
+        "aabb": {
+          "min": [-1, -1, -1],
+          "max": [1, 1, 1]
+        },
+        "translation": [10, 2, -5],
+        "scale": [10, 10, 10]
+      },
+      {
+          "type": "model",
+          "mesh": 2,
+          "texture": 3
+      },
+      {
       "objekt": "GAMABUNTA",
       "type": "model",
       "mesh": 0,
@@ -260,7 +351,8 @@
         "max": [1, 1, 1]
       },
       "translation": [-1.2, 1.1, -11],
-      "scale": [0.7, 0.1, 0.1]
+      "scale": [0.7, 0.1, 0.1],
+      "weaponType": "projectile"
     },
     {
       "type": "weapon",
@@ -271,7 +363,8 @@
         "max": [1, 1, 1]
       },
       "translation": [1.2, 1.1, -11],
-      "scale": [0.7, 0.1, 0.1]
+      "scale": [0.7, 0.1, 0.1],
+      "weaponType": "boomerang"
     },
     {
       "type": "collectable",
@@ -296,7 +389,36 @@
       "translation": [-4, 9, 18],
       "scale": [0.3, 0.3, 0.3],
       "isBreakable" : false
-    }
+    },
+    {
+        "objekt":"CHALLE SALE",
+        "type": "model",
+        "mesh": 0,
+        "texture": 12,
+        "aabb": {
+          "min": [-1, -10, -20],
+          "max": [1, 10, 20]
+        },
+        "translation": [-19.08, 3, 0],
+        "scale": [0.1, 3, 5],
+        "isBreakable": false,
+        "isPrisoner": true
+      },
+      {
+        "objekt":"CHALLE SALE saved",
+        "type": "model",
+        "mesh": 0,
+        "texture": 13,
+        "aabb": {
+          "min": [-1, -10, -20],
+          "max": [1, 10, 20]
+        },
+        "translation": [-20, 3, 0],
+        "scale": [0.1, 3, 5],
+        "isBreakable": false,
+        "isPrisoner": true,
+        "isChalleSale": true
+      }
   ],
   "textures": [
     "../../common/images/crate-diffuse.png",
@@ -311,11 +433,14 @@
     "../../common/images/metal-box.png",
     "../../common/images/wooden-box.jpg",
     "../../common/images/trunk.jpg",
-    "../../common/images/tree.jpg"
+    "../../common/images/tree.jpg",
+    "../../common/images/prison-sale.png",
+    "../../common/images/saved-sale.jpg"
   ],
   "meshes": [
     "../../common/models/cube.json",
     "../../common/models/pyramid.json",
+    "../../common/models/hammer.json",
     "../../common/models/ball.json"
   ]
 }

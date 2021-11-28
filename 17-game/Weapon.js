@@ -8,6 +8,8 @@ export class Weapon extends Node {
         this.mesh = mesh;
         this.image = image;
         this.shooting = false;
+        this.boomeranging = false;
+        this.weaponType = options.weaponType;
     }
 
     addPhysics(scene) {
@@ -15,10 +17,17 @@ export class Weapon extends Node {
         this.physics = new Physics(scene);
     }
 
+    reset() {
+        this.translation[0] = 3;
+        this.translation[1] = 0;
+        this.translation[2] = -4;
+        this.updateTransform();
+    }
+
     animateAttack() {
         let frame = 0;
         const anim = setInterval(() => {
-            this.rotation[1] += 1;
+            this.rotation[0] = 0;
             this.updateTransform();
             frame += 1;
             if(frame >= 60)
@@ -41,6 +50,11 @@ export class Weapon extends Node {
             if(frame >= 30)
                 clearInterval(anim);
         }, 1);
+
+        setTimeout(() => {
+            this.scale = [0.5,0.5,1];
+            this.boomeranging = false;
+        }, 1000)
     }
 
     animateShot() {
@@ -61,9 +75,7 @@ export class Weapon extends Node {
         setTimeout(() => {
             this.scale = [0.5,0.5,1];
             this.shooting = false;
-            this.translation[0] = 1;
-            this.translation[2] = -2;
-            this.updateTransform();
+            this.reset();
         }, 1000)
     }
 
@@ -76,6 +88,13 @@ export class Weapon extends Node {
         if(!this.shooting) {
             this.shooting = true;
             this.animateShot();
+        }
+    }
+
+    boomerang() {
+        if(!this.boomeranging) {
+            this.boomeranging = true;
+            this.animateBoomerang();
         }
     }
 
