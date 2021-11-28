@@ -158,6 +158,7 @@ export class Physics {
         this.scene.traverse(node => {
             if (node !== a && this.isColliding(a, node) && !(node instanceof Camera) && node.isBreakable) {
                 this.removeNode(node);
+                return;
             }
         });
     }

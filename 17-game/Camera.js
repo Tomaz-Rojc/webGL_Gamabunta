@@ -245,11 +245,16 @@ export class Camera extends Node {
                     this.attackListener = document.addEventListener('click', (e) => {
                         if(e.button === 0) {
                             switch(game.weapon.weaponType) {
+                                case 'melee':
+                                    game.weapon.attack();
+                                    break;
                                 case 'projectile': 
                                     game.weapon.shoot();
+                                    game.weapon.rotation = [5, 0, 1.5];
                                     break;
                                 case 'boomerang':
                                     game.weapon.boomerang();
+                                    break;
                             }
                         }
                     });
