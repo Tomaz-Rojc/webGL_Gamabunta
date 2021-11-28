@@ -124,6 +124,13 @@ export class Physics {
         this.score += 1;
     }
 
+    animateCollectible(model) {
+        const x = Math.cos(Date.now() * 0.001);
+        model.translation[1] += x / 250;
+        model.rotation[1] += 0.01;
+        model.updateTransform();
+    }
+
     isColliding(a, b) {
         const ta = a.getGlobalTransform();
         const tb = b.getGlobalTransform();
