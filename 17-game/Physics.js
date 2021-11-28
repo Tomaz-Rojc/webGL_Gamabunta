@@ -28,7 +28,7 @@ export class Physics {
                     if (node !== other && !(node instanceof Weapon) && !(other instanceof Weapon)) {
                         this.resolveCollision(node, other);
                     }
-                    if(other.isPrisoner && this.saleScore >= 3 && !this.isSaved) {
+                    if(other.isPrisoner && this.saleScore >= 5 && !this.isSaved) {
                         if(this.isColliding(node, other)) {
                             this.isSaved = true;
                             other.translation[0] = -20;

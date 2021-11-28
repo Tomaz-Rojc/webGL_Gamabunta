@@ -86,7 +86,11 @@ export class Camera extends Node {
 
         // check for jump
         if (this.keys['Space'] && !this.jump && ((1.6999 < this.translation[1] && this.translation[1] < 1.71) || 
-            (3.6999 < this.translation[1] && this.translation[1] < 3.71) || (5.6999 < this.translation[1] && this.translation[1] < 5.71))) {
+            (3.6999 < this.translation[1] && this.translation[1] < 3.71) || 
+            (5.6999 < this.translation[1] && this.translation[1] < 5.71) ||
+            (7.6999 < this.translation[1] && this.translation[1] < 7.71) ||
+            (9.6999 < this.translation[1] && this.translation[1] < 9.71))) {
+                console.log("jump")
             this.doubleJumpAvailable = false;
             this.jump = true;
             var inAir = 0;
