@@ -8,70 +8,6 @@
         "max": [0.5, 0.5, 0.5]
       }
     },
-      {
-        "type": "model",
-        "mesh": 0,
-        "texture": 0,
-        "aabb": {
-          "min": [-1, -1, -1],
-          "max": [1, 1, 1]
-        },
-        "translation": [3, 1, -5]
-      },
-      {
-          "type": "model",
-          "mesh": 0,
-          "texture": 0,
-          "aabb": {
-            "min": [-1, -1, -1],
-            "max": [1, 1, 1]
-          },
-          "translation": [-3, 1, -5]
-        },
-      {
-        "type": "model",
-        "mesh": 0,
-        "texture": 1,
-        "aabb": {
-          "min": [-1, -1, -1],
-          "max": [1, 1, 1]
-        },
-        "translation": [0, 1, 5]
-      },
-      {
-        "type": "model",
-        "mesh": 1,
-        "texture": 1,
-        "aabb": {
-          "min": [-0.5, -0.5, 0.5],
-          "max": [0.5, 0.5, 0.5]
-        },
-        "translation": [0, 0.5, -5],
-        "scale": [2, 2, 2]
-      },
-      {
-        "type": "model",
-        "mesh": 0,
-        "texture": 0,
-        "aabb": {
-          "min": [-1, -0.1, -1],
-          "max": [1, 0.1, 1]
-        },
-        "translation": [3, 0.1, -1],
-        "rotation": [0, 1, 0],
-        "scale": [1, 0.1, 1]
-      },
-      {
-        "type": "model",
-        "mesh": 0,
-        "texture": 2,
-        "aabb": {
-          "min": [-1, -0.1, -1],
-          "max": [1, 0.1, 1]
-        },
-        "translation": [0, 0, 0],
-        "scale": [10, 0, 10]
-      },
     {
       "objekt" : "ALTAR",
       "type": "model",
@@ -224,28 +160,6 @@
       },
       "translation": [-10, 1, -4]
     },
-    {
-        "type": "weapon",
-        "mesh": 0,
-        "texture": 2,
-        "aabb": {
-          "min": [-1, -1, -1],
-          "max": [1, 1, 1]
-        },
-        "translation": [1, 0, -2],
-        "scale": [0.5, 0.5, 1]
-    },
-    {
-        "type": "model",
-        "mesh": 0,
-        "texture": 4,
-        "aabb": {
-          "min": [-1, -1, -1],
-          "max": [1, 1, 1]
-        },
-        "translation": [10, 2, -5],
-        "scale": [10, 10, 10]
-      },
       {
           "type": "model",
           "mesh": 2,
@@ -394,7 +308,7 @@
         "objekt":"CHALLE SALE",
         "type": "model",
         "mesh": 0,
-        "texture": 12,
+        "texture": 13,
         "aabb": {
           "min": [-1, -10, -20],
           "max": [1, 10, 20]
@@ -408,7 +322,7 @@
         "objekt":"CHALLE SALE saved",
         "type": "model",
         "mesh": 0,
-        "texture": 13,
+        "texture": 14,
         "aabb": {
           "min": [-1, -10, -20],
           "max": [1, 10, 20]
