@@ -267,7 +267,8 @@
         "translation": [-1.5, 1.1, -11],
         "scale": [0.7, 0.01, 0.7],
         "rotation": [0, 0, 0],
-        "weaponType": "melee"
+        "weaponType": "melee",
+        "isBreakable": false
       },
     {
       "type": "weapon",
@@ -280,7 +281,8 @@
       "translation": [0, 1.1, -11],
       "scale": [0.3, 5, 0.3],
       "rotation": [0, 0, 0],
-      "weaponType": "projectile"
+      "weaponType": "projectile",
+      "isBreakable": false
     },
     {
       "type": "weapon",
@@ -292,7 +294,8 @@
       },
       "translation": [1.5, 1.1, -11],
       "scale": [0.1, 1.3, 0.1],
-      "weaponType": "boomerang"
+      "weaponType": "boomerang",
+      "isBreakable": false
     },
     {
       "type": "collectable",

@@ -220,23 +220,42 @@ export class Camera extends Node {
     ]
 
     weaponHandler(e, game) {
-        if(e.code === 'Digit1' || e.code === 'Digit2' || e.code === 'Digit3') {
+        let dist = this.translation[2] + 11;
+        if(dist < 2 && e.code === 'KeyE') {
+            let d1, d2, d3;
+            d1 = Math.abs(this.translation[0] + 1.5);
+            d2 = Math.abs(this.translation[0]);
+            d3 = Math.abs(this.translation[0] - 1.5);
+            
             let weaponCode;
-            switch(e.code) {
-                case 'Digit1':
-                    weaponCode = this.weaponCodes[0];
-                    break;
-                case 'Digit2':
-                    weaponCode = this.weaponCodes[1];
-                    break;
-                case 'Digit3':
-                    weaponCode = this.weaponCodes[2];
-                    break;
+
+            if(d1 < d2 && d1 < d3) {
+                weaponCode = this.weaponCodes[0];
+            } else if(d2 < d1 && d2 < d3) {
+                weaponCode = this.weaponCodes[1];
+            } else {
+                weaponCode = this.weaponCodes[2];
             }
+
+            // switch(e.code) {
+            //     case 'Digit1':
+            //         weaponCode = this.weaponCodes[0];
+            //         break;
+            //     case 'Digit2':
+            //         weaponCode = this.weaponCodes[1];
+            //         break;
+            //     case 'Digit3':
+            //         weaponCode = this.weaponCodes[2];
+            //         break;
+            // }
 
             game.scene.nodes.some((node, idx) => {
                 if(node instanceof Weapon && node.weaponType === weaponCode) {
+                    if(this.weapon) {
+                        game.camera.removeChild(this.weapon);
+                    }
                     game.weapon = node;
+                    this.weapon = node;
                     game.camera.addChild(game.weapon);
                     game.scene.nodes.splice(idx, 1);
                     game.weapon.addPhysics(game.scene);
